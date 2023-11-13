@@ -1,0 +1,450 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ILRuntime.Test.Cases
+{
+    public class RefOutTest
+    {
+        static class Check
+        {
+            public static void Test<T>(T value)
+            {
+                if (value == null)
+                    throw new Exception("null");
+            }
+
+            public static void Test2<T>(T obj)
+            {
+                Action<T> action = (value) => { Console.WriteLine(value); };
+                action(obj);
+            }
+        }
+
+        public static void UnitTest_NullCheck()
+        {
+            Check.Test(new byte[] { 1, 2 });
+        }
+
+        public static void UnitTest_GenericDelegate()
+        {
+            Check.Test2(1);
+        }
+
+        static void Swap<T>(T[] arr, int idx1, int idx2)
+        {
+            if (idx1 >= arr.Length || idx2 >= arr.Length) return;
+            T temp = arr[idx1];
+            arr[idx1] = arr[idx2];
+            arr[idx2] = temp;
+        }
+
+        public static void UnitTest_Swap()
+        {
+            int[] arr = new int[] { 1, 2 };
+            Swap(arr, 0, 1);
+
+            Console.WriteLine(arr[0]);
+        }
+        static bool TryGet(out A a)
+        {
+            a = null;
+            return true;
+        }
+
+        public static void UnitTest_RefOutNull()
+        {
+            A aaa = new A(123);
+            TryGet(out aaa);
+            if (aaa != null)
+                throw new Exception();
+        }
+        class TestClass222
+        {
+            public TestClass222()
+            {
+                t = s++;
+            }
+            public int t;
+            static int s = 1;
+        }
+        class TestRefOut2Cls
+        {
+            public TestRefOut2Cls()
+            {
+                p = null;
+                //非null就不会有问题
+                //p = new TestClass();
+            }
+            public bool TryGetObject<T>(out T res) where T : TestClass222, new()
+            {
+                //用局部变量中转没问题
+                //var tmp = p as T;
+                //res = null;
+                //res = tmp;
+                //这一句现在没什么用（比如用来if判断）但没有这一句不会报错。
+                res = p as T;
+                res = new T();//这里解析器越界异常
+                              //res = p as T;//这样也会解析器越界异常
+                Console.WriteLine("!!! new T");
+                return true;
+            }
+            TestClass222 p;
+        }
+        public static void UnitTest_RefOutNull2()
+        {
+            TestClass222 res;
+            TestRefOut2Cls obj = new TestRefOut2Cls();
+            obj.TryGetObject(out res);
+            if (res == null)
+                throw new Exception();
+        }
+        public static void UnitTest_Typeof()
+        {
+            object obj = 1;
+            if (obj.GetType() == typeof(int))
+            {
+                Console.WriteLine("ok");
+            }
+            else
+                Console.WriteLine("error");
+
+            if (obj is int)
+            {
+                Console.WriteLine("ok");
+            }
+            else
+                Console.WriteLine("error");
+
+        }
+        public class TestGenrRefBase
+        {
+            public int v;
+            TestGenrRefBase t;
+            ILRuntime.Test.TestStruct str;
+            static ILRuntime.Test.TestStruct str2;
+            public TestGenrRefBase()
+            {
+                v = 1;
+            }
+
+            public TestGenrRefBase(int val)
+            {
+                v = val;
+            }
+
+            void TestRef(ref int a)
+            {
+                a = 123;
+            }
+
+            public void DoTestRef()
+            {
+                TestRef(ref v);
+            }
+
+            public void DoTestRef2()
+            {
+                t = new TestGenrRef();
+                t.v = 2;
+                TestGenrRefBase t2 = ReadData(ref t);
+
+                Console.WriteLine("new val:" + t2.v);
+                Console.WriteLine("new val:" + t.v);
+            }
+
+            public void DoTestRef3()
+            {
+                ILRuntime.Test.TestStruct.DoTest(ref str);
+
+                Console.WriteLine("new val:" + str.value);
+
+                ILRuntime.Test.TestStruct.DoTest(ref str2);
+
+                Console.WriteLine("new val:" + str2.value);
+
+                ILRuntime.Test.TestStruct.DoTest(ref v);
+
+                Console.WriteLine("new val:" + v);
+
+                var b = str;
+                b.value = 1233333;
+                ILRuntime.Test.TestStruct.DoTest2(str);
+                Console.WriteLine("new val:" + str.value);
+            }
+
+            public string GetString()
+            {
+                return "1";
+            }
+
+            public T ReadData<T>(ref T obj) where T : TestGenrRefBase, new()
+            {
+                obj = new T();
+                obj.v = 8;
+                return obj;
+            }
+        }
+
+        public class TestGenrRef : TestGenrRefBase
+        {
+            public TestGenrRef()
+            {
+                v = 5;
+            }
+        }
+
+        static TestGenrRef ttt;
+        public static void UnitTest_GenericsRefOut()
+        {
+            ttt = new TestGenrRef();
+            ttt.v = 2;
+            TestGenrRef t2 = ReadData<TestGenrRef>(ref ttt);
+
+            Console.WriteLine("new val:" + t2.v);
+            Console.WriteLine("new val:" + ttt.v);
+
+            t2.DoTestRef();
+            Console.WriteLine("new val:" + t2.v);
+            Console.WriteLine("new val:" + ttt.v);
+
+            t2.DoTestRef2();
+            t2.DoTestRef3();
+        }
+
+
+        static T ReadData<T>(ref T obj) where T : TestGenrRefBase, new()
+        {
+            obj = new T();
+            obj.v = 6;
+            return obj;
+        }
+
+        public static void UnitTest_GenericsRefOut2()
+        {
+
+            TestGenrRef t = ReadData2<TestGenrRef>(null);
+
+            Console.WriteLine("new val:" + t.v);
+        }
+
+
+        static T ReadData2<T>(byte[] data) where T : TestGenrRefBase, new()
+        {
+            T obj = null;
+            Read<T>(ref obj);
+            return obj;
+        }
+
+        static T Read<T>(ref T dest) where T : TestGenrRefBase, new()
+        {
+            dest = new T();
+            dest.v = 111;
+            dest.GetString();
+            return dest;
+        }
+
+        public static void UnitTest_GenericsRefOutList()
+        {
+            List<TestGenrRef> list = null;
+            ReadList<TestGenrRef>(ref list);
+            Console.WriteLine(list[0]);
+        }
+
+        static int ReadList<T>(ref List<T> dest) where T : TestGenrRefBase, new()
+        {
+            if (dest == null)
+                dest = new List<T>();
+
+            T obj = new T();
+
+            dest.Add(obj);
+            return 0;
+        }
+
+
+        public static void UnitTest_RefTest()
+        {
+            TestCls r = null;
+            TestRef(ref r);
+            Console.WriteLine("Result = " + r.TestVal2);
+            float a = 1.0f;
+            float b = a / 2;
+            var str = string.Format("{0:0.000}", b);
+            Console.WriteLine(str);
+        }
+
+        public static void UnitTest_RefTest2()
+        {
+            SingletonTest r = new SingletonTest();
+            SingletonTest r2 = TestRef<SingletonTest>(ref r);
+
+            Console.WriteLine("Result = " + r.testFloat);
+
+        }
+
+        public static void UnitTest_RefTest3()
+        {
+           //下面这里跑不过
+            var arr = new int[3];
+            Func(ref arr);
+            Console.WriteLine(arr[1]);
+        }
+
+        public static void Set(ref long x)
+        {
+            if (x != 10)
+                throw new Exception();
+            x++;
+        }
+
+        public static void UnitTest_RefTest4()
+        {
+            long srcX = 10;
+
+            for (var index = 0; index < 10; index++)
+            {
+                long x = srcX;
+                Set(ref x);
+            }
+        }
+
+        static void Func(ref int[] arr)
+        {
+            arr[1] = 2;
+        }
+
+
+        public static void UnitTest_OutTest()
+        {
+            Dictionary<int, TestCls> dic = new Dictionary<int, TestCls>();
+            dic[1] = new TestCls();
+            TestCls abc;
+            if (dic.TryGetValue(1, out abc))
+            {
+                Console.WriteLine(abc.TestVal2);
+            }
+        }
+        static int TestRef(ref TestCls dest)
+        {
+            dest = new TestCls();
+            dest.TestVal2 = 2;
+            return 0;
+        }
+
+        class RefReturnTest
+        {
+            Vector3 vec;
+            public ref Vector3 GetRef()
+            {
+                return ref vec;
+            }
+
+            public void Test(float val)
+            {
+                if (vec.y != val)
+                    throw new Exception();
+            }
+        }
+        [ILRuntimeTest(IsToDo = true)]
+        public static void UnitTest_RefReturn()
+        {
+            RefReturnTest obj = new RefReturnTest();
+            ref Vector3 r = ref obj.GetRef();
+            r.y = 123;
+            obj.Test(123);
+        }
+
+        public static void UnitTest_RefCLREnum()
+        {
+            ILRuntime.Test.TestCLREnumClass.TestCLREnumRef(out var key, out var tag);
+            if (key != 2)
+                throw new Exception("key");
+            if (tag != ILRuntime.Test.TestCLREnum.Test2)
+                throw new Exception("tag");
+        }
+
+        static T TestRef<T>(ref T obj) where T : SingletonTest, new()
+        {
+            obj.testFloat = 3;
+
+            return obj;
+        }
+
+        public static void UnitTest_ArrayReferenceTest()
+        {
+            Dictionary<int, TestGenrRef> dic = new Dictionary<int, TestGenrRef>();
+            dic[123] = new TestGenrRef();
+            TestGenrRef[] arr = new TestGenrRef[10];
+            if (dic.TryGetValue(123, out arr[1]))
+            {
+                arr[1].DoTestRef();
+            }
+            else
+                throw new Exception();
+        }
+
+        class LongHolder
+        {
+            public long lv;
+        }
+
+        public static void UnitTest_LongRefTest()
+        {
+            long stackof = 4200000000L;
+            long stackl = 24;
+            var heapLong = new LongHolder();
+            ILRuntime.Test.ClassInheritanceTest.TestLongRef(ref stackof);//无论代码是否binding，输出TestLongRef:-94967296
+            ILRuntime.Test.ClassInheritanceTest.TestLongRef(ref stackl);//无论代码是否binding，输出TestLongRef:24
+            ILRuntime.Test.ClassInheritanceTest.TestLongRef(ref heapLong.lv);//若代码binding，输出TestLongRef:4（或者其他莫名的值），否则输出TestLongRef:0，换成ref int也一样，class对象的话没测试过。
+        }
+
+        public static void UnitTest_LongRefTest2()
+        {
+            long test = 1;
+            UnitTest_LongRefTest2Sub(ref test);
+
+            Console.WriteLine(string.Format("{0:X8}", test));
+        }
+        private static void UnitTest_LongRefTest2Sub(ref long mask)
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                mask |= (long)1 << i;
+            }
+        }
+
+        class UnitTest_NestedGenericRefOutClass
+        {
+            public int IntValue = 2;
+            public string StringValue = "fff";
+        }
+        public static void UnitTest_NestedGenericRefOut()
+        {
+            UnitTest_NestedGenericRefOutClass obj = new UnitTest_NestedGenericRefOutClass();
+            string loc = obj.StringValue;
+            //int loc2 = 444;
+            //UnitTest_NestedGenericRefOutSub(ref loc2);
+            UnitTest_NestedGenericRefOutStringSub(ref loc);
+            //if (loc2 == 444)
+            //    throw new Exception();
+            if (loc != null)
+                throw new Exception();
+        }
+
+        static void UnitTest_NestedGenericRefOutSub(ref int value)
+        {
+            UnitTest_NestedGenericRefOutSub2(ref value);
+        }
+        static void UnitTest_NestedGenericRefOutStringSub(ref string value)
+        {
+            UnitTest_NestedGenericRefOutSub2(ref value);
+        }
+
+        static void UnitTest_NestedGenericRefOutSub2<T>(ref T result)
+        {
+            result = default;
+        }
+    }
+}

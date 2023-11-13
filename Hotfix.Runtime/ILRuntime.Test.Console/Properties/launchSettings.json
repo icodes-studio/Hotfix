@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ILRuntime.Test.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "../../../../ILRuntime.Test.Cases/bin/Release/netstandard2.0/ILRuntime.Test.Cases.dll true"
+    }
+  }
+}

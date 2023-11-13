@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ILRuntime.LitJson\ILRuntime.LitJson.csproj" />
+    <ProjectReference Include="..\ILRuntime.Test\ILRuntime.Test.csproj" />
+  </ItemGroup>
+
+</Project>
