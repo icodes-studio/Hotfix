@@ -9,7 +9,7 @@ namespace ILRuntime.Runtime
 {
     public static class Extensions
     {
-        public static bool GetJITFlags(this Mono.Cecil.CustomAttribute attribute, Enviorment.AppDomain appdomain, out int flags)
+        public static bool GetJITFlags(this Mono.Cecil.CustomAttribute attribute, Environment.AppDomain appdomain, out int flags)
         {
             var at = appdomain.GetType(attribute.AttributeType, null, null);
             flags = ILRuntimeJITFlags.None;
@@ -302,8 +302,8 @@ namespace ILRuntime.Runtime
 
         public static Type GetActualType(this object value)
         {
-            if (value is ILRuntime.Runtime.Enviorment.CrossBindingAdaptorType)
-                return ((ILRuntime.Runtime.Enviorment.CrossBindingAdaptorType)value).ILInstance.Type.ReflectionType;
+            if (value is ILRuntime.Runtime.Environment.CrossBindingAdaptorType)
+                return ((ILRuntime.Runtime.Environment.CrossBindingAdaptorType)value).ILInstance.Type.ReflectionType;
             if (value is ILRuntime.Runtime.Intepreter.ILTypeInstance)
                 return ((ILRuntime.Runtime.Intepreter.ILTypeInstance)value).Type.ReflectionType;
             else

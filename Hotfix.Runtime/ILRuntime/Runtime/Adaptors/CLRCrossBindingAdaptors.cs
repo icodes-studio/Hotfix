@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 
 namespace ILRuntime.Runtime.Adapters
@@ -27,7 +27,7 @@ namespace ILRuntime.Runtime.Adapters
             }
         }
 
-        public override object CreateCLRInstance(Enviorment.AppDomain appdomain, ILTypeInstance instance)
+        public override object CreateCLRInstance(Environment.AppDomain appdomain, ILTypeInstance instance)
         {
             return new Adapter(appdomain, instance);
         }
@@ -35,12 +35,12 @@ namespace ILRuntime.Runtime.Adapters
         public class Adapter : Attribute, CrossBindingAdaptorType
         {
             ILTypeInstance instance;
-            ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+            ILRuntime.Runtime.Environment.AppDomain appdomain;
 
             bool isToStringGot;
             IMethod toString;
 
-            public Adapter(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+            public Adapter(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;

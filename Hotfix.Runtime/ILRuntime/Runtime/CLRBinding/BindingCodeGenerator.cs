@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Other;
 
 namespace ILRuntime.Runtime.CLRBinding
@@ -45,7 +45,7 @@ using System.Runtime.InteropServices;
 
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.Reflection;
@@ -61,7 +61,7 @@ namespace ILRuntime.Runtime.Generated
     unsafe class ");
                     sb.AppendLine(clsName);
                     sb.Append(@"    {
-        public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
+        public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
 ");
                     string flagDef = "            BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;";
@@ -184,7 +184,7 @@ namespace ILRuntime.Runtime.Generated
             }
         }
 
-        public static void GenerateBindingCode(ILRuntime.Runtime.Enviorment.AppDomain domain, string outputPath, 
+        public static void GenerateBindingCode(ILRuntime.Runtime.Environment.AppDomain domain, string outputPath, 
                                                List<Type> valueTypeBinders = null, List<Type> delegateTypes = null, int maxGenericDepth = 10,
                                                params string[] excludeFiles)
         {
@@ -263,7 +263,7 @@ using System.Runtime.InteropServices;
 
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.Reflection;
@@ -278,7 +278,7 @@ namespace ILRuntime.Runtime.Generated
     unsafe class ");
                     sb.AppendLine(clsName);
                     sb.Append(@"    {
-        public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
+        public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
 ");
                     string flagDef =    "            BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;";
@@ -374,7 +374,7 @@ namespace ILRuntime.Runtime.Generated
         /// <summary>
         /// Initialize the CLR binding, please invoke this AFTER CLR Redirection registration
         /// </summary>
-                public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
+                public static void Initialize(ILRuntime.Runtime.Environment.AppDomain app)
         {");
                 foreach (var i in clsNames)
                 {
@@ -395,7 +395,7 @@ namespace ILRuntime.Runtime.Generated
             GenerateBindingInitializeScript(clsNames, valueTypeBinders, outputPath);
         }
 
-        static void PrewarmDomain(ILRuntime.Runtime.Enviorment.AppDomain domain)
+        static void PrewarmDomain(ILRuntime.Runtime.Environment.AppDomain domain)
         {
             var arr = domain.LoadedTypes.Values.ToArray();
             //Prewarm
@@ -438,7 +438,7 @@ namespace ILRuntime.Runtime.Generated
                 }
             }
         }
-        internal static void CrawlAppdomain(ILRuntime.Runtime.Enviorment.AppDomain domain, Dictionary<Type, CLRBindingGenerateInfo> infos, int maxGenericDepth)
+        internal static void CrawlAppdomain(ILRuntime.Runtime.Environment.AppDomain domain, Dictionary<Type, CLRBindingGenerateInfo> infos, int maxGenericDepth)
         {
             domain.SuppressStaticConstructor = true;
             for(int i = 0; i < maxGenericDepth; i++)
@@ -470,7 +470,7 @@ namespace ILRuntime.Runtime.Generated
             }
         }
 
-        static void CrawlType(ILRuntime.Runtime.Enviorment.AppDomain domain, CLR.TypeSystem.ILType type, Dictionary<Type, CLRBindingGenerateInfo> infos)
+        static void CrawlType(ILRuntime.Runtime.Environment.AppDomain domain, CLR.TypeSystem.ILType type, Dictionary<Type, CLRBindingGenerateInfo> infos)
         {
             var methods = type.GetMethods().ToList();
             foreach (var i in ((CLR.TypeSystem.ILType)type).GetConstructors())
@@ -665,7 +665,7 @@ using System.Runtime.InteropServices;
 
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.Reflection;
@@ -680,7 +680,7 @@ namespace ILRuntime.Runtime.Generated
     unsafe class ");
                     sb.AppendLine(clsName);
                     sb.AppendLine(@"    {
-        public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
+        public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {");
                     bool first = true;
 
@@ -861,7 +861,7 @@ namespace ILRuntime.Runtime.Generated
                         bool isByRef;
                         i.GetClassName(out clsName, out realClsName, out isByRef);
 
-                        sb.AppendLine(string.Format("        internal static ILRuntime.Runtime.Enviorment.ValueTypeBinder<{0}> s_{1}_Binder = null;", realClsName, clsName));
+                        sb.AppendLine(string.Format("        internal static ILRuntime.Runtime.Environment.ValueTypeBinder<{0}> s_{1}_Binder = null;", realClsName, clsName));
                     }
 
                     sb.AppendLine();
@@ -870,7 +870,7 @@ namespace ILRuntime.Runtime.Generated
                 sb.AppendLine(@"        /// <summary>
         /// Initialize the CLR binding, please invoke this AFTER CLR Redirection registration
         /// </summary>
-        public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
+        public static void Initialize(ILRuntime.Runtime.Environment.AppDomain app)
         {");
                 if (clsNames != null)
                 {
@@ -894,7 +894,7 @@ namespace ILRuntime.Runtime.Generated
                         i.GetClassName(out clsName, out realClsName, out isByRef);
 
                         sb.AppendLine(string.Format("            __clrType = (ILRuntime.CLR.TypeSystem.CLRType)app.GetType (typeof({0}));", realClsName));
-                        sb.AppendLine(string.Format("            s_{0}_Binder = __clrType.ValueTypeBinder as ILRuntime.Runtime.Enviorment.ValueTypeBinder<{1}>;", clsName, realClsName));
+                        sb.AppendLine(string.Format("            s_{0}_Binder = __clrType.ValueTypeBinder as ILRuntime.Runtime.Environment.ValueTypeBinder<{1}>;", clsName, realClsName));
                     }
                 }
                 sb.AppendLine(@"        }");
@@ -903,7 +903,7 @@ namespace ILRuntime.Runtime.Generated
         /// <summary>
         /// Release the CLR binding, please invoke this BEFORE ILRuntime Appdomain destroy
         /// </summary>
-        public static void Shutdown(ILRuntime.Runtime.Enviorment.AppDomain app)
+        public static void Shutdown(ILRuntime.Runtime.Environment.AppDomain app)
         {");
                 if (valueTypeBinders != null)
                 {

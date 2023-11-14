@@ -27,7 +27,7 @@ namespace ILRuntime.Runtime.Debugger
     {
         BreakPointContext curBreakpoint;
         DebuggerServer server;
-        Runtime.Enviorment.AppDomain domain;
+        Runtime.Environment.AppDomain domain;
         Dictionary<int, LinkedList<BreakpointInfo>> activeBreakpoints = new Dictionary<int, LinkedList<BreakpointInfo>>();
         Dictionary<int, BreakpointInfo> breakpointMapping = new Dictionary<int, BreakpointInfo>();
         Queue<Tuple<int, int, VariableReference>> pendingReferences = new Queue<Tuple<int, int, VariableReference>>();
@@ -42,7 +42,7 @@ namespace ILRuntime.Runtime.Debugger
         public Action<string> OnBreakPoint;
         public Action<string> OnILRuntimeException;
 
-        public Enviorment.AppDomain AppDomain { get { return domain; } }
+        public Environment.AppDomain AppDomain { get { return domain; } }
 
         public AutoResetEvent BlockEvent { get { return evt; } }
 
@@ -58,7 +58,7 @@ namespace ILRuntime.Runtime.Debugger
             }
         }
 
-        public DebugService(Runtime.Enviorment.AppDomain domain)
+        public DebugService(Runtime.Environment.AppDomain domain)
         {
             this.domain = domain;
         }
@@ -755,10 +755,10 @@ namespace ILRuntime.Runtime.Debugger
                         return EnumObject(((ILTypeInstance)obj).CLRInstance, ((ILTypeInstance)obj).Type.ReflectionType);
                         //return EnumILTypeInstance((ILTypeInstance)obj, intepreter);
                     }
-                    else if (obj is ILRuntime.Runtime.Enviorment.CrossBindingAdaptorType)
+                    else if (obj is ILRuntime.Runtime.Environment.CrossBindingAdaptorType)
                     {
-                        return EnumObject(obj, ((Enviorment.CrossBindingAdaptorType)obj).ILInstance.Type.ReflectionType);
-                        //return EnumILTypeInstance(((Enviorment.CrossBindingAdaptorType)obj).ILInstance, intepreter);
+                        return EnumObject(obj, ((Environment.CrossBindingAdaptorType)obj).ILInstance.Type.ReflectionType);
+                        //return EnumILTypeInstance(((Environment.CrossBindingAdaptorType)obj).ILInstance, intepreter);
                     }
                     else
                     {
@@ -999,7 +999,7 @@ namespace ILRuntime.Runtime.Debugger
                         //}
                         //else
                         //{
-                        //if(obj is ILRuntime.Runtime.Enviorment.CrossBindingAdaptorType)
+                        //if(obj is ILRuntime.Runtime.Environment.CrossBindingAdaptorType)
                         //{
                         //    throw new NotImplementedException();
                         //}
@@ -1421,8 +1421,8 @@ namespace ILRuntime.Runtime.Debugger
                     type = ((ILTypeInstance)obj).Type.ReflectionType;
                     obj = ((ILTypeInstance)obj).CLRInstance; // 如果CLRInstance表示一个适配器，那么一定要用适配器实例作反射，否则得不到CLR成员的值
                 }
-                else if (obj is Enviorment.CrossBindingAdaptorType)
-                    type = ((Enviorment.CrossBindingAdaptorType)obj).ILInstance.Type.ReflectionType;
+                else if (obj is Environment.CrossBindingAdaptorType)
+                    type = ((Environment.CrossBindingAdaptorType)obj).ILInstance.Type.ReflectionType;
                 else
                     type = obj.GetType();
             }

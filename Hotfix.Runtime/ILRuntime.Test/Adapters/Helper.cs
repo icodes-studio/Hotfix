@@ -6,7 +6,7 @@ namespace ILRuntime.Test
     public class ILRuntimeHelper
     {
         // manual register
-        public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
+        public static void Initialize(ILRuntime.Runtime.Environment.AppDomain app)
         {
             if (app == null)
             {
@@ -14,8 +14,8 @@ namespace ILRuntime.Test
                 return;
             }
 
-            ILRuntime.Runtime.Enviorment.PrimitiveConverter<TestCLREnum>.ToInteger = (a) => (int)a;
-            ILRuntime.Runtime.Enviorment.PrimitiveConverter<TestCLREnum>.FromInteger = (a) => (TestCLREnum)a;
+            ILRuntime.Runtime.Environment.PrimitiveConverter<TestCLREnum>.ToInteger = (a) => (int)a;
+            ILRuntime.Runtime.Environment.PrimitiveConverter<TestCLREnum>.FromInteger = (a) => (TestCLREnum)a;
 
             // adaptor register 
 

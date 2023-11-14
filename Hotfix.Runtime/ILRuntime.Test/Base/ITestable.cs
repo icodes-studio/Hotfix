@@ -1,4 +1,4 @@
-﻿using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
+﻿using AppDomain = ILRuntime.Runtime.Environment.AppDomain;
 
 namespace ILRuntime.Test
 {

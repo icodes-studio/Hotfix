@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 
@@ -13,12 +13,12 @@ using AutoList = System.Collections.Generic.List<object>;
 #else
 using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     public unsafe abstract class ValueTypeBinder
     {
         protected CLRType clrType;
-        protected Enviorment.AppDomain domain;
+        protected Environment.AppDomain domain;
 
         public CLRType CLRType
         {
@@ -39,7 +39,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public abstract object ToObject(StackObject* esp, IList<object> managedStack);
 
-        public virtual void RegisterCLRRedirection(Enviorment.AppDomain appdomain)
+        public virtual void RegisterCLRRedirection(Environment.AppDomain appdomain)
         {
 
         }
@@ -134,7 +134,7 @@ namespace ILRuntime.Runtime.Enviorment
             }
         }
 
-        public void WriteBackValue(ILRuntime.Runtime.Enviorment.AppDomain domain, StackObject* ptr_of_this_method, IList<object> mStack, ref T instance_of_this_method)
+        public void WriteBackValue(ILRuntime.Runtime.Environment.AppDomain domain, StackObject* ptr_of_this_method, IList<object> mStack, ref T instance_of_this_method)
         {
             ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
             switch (ptr_of_this_method->ObjectType)

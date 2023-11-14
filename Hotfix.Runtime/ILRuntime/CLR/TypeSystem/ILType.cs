@@ -5,7 +5,7 @@ using System.Text;
 
 using ILRuntime.Mono.Cecil;
 using ILRuntime.Runtime;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.CLR.Method;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Reflection;
@@ -18,7 +18,7 @@ namespace ILRuntime.CLR.TypeSystem
         Dictionary<string, List<ILMethod>> methods;
         TypeReference typeRef;
         TypeDefinition definition;
-        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+        ILRuntime.Runtime.Environment.AppDomain appdomain;
         bool staticConstructorCalled;
         ILMethod staticConstructor;
         List<ILMethod> constructors;
@@ -225,7 +225,7 @@ namespace ILRuntime.CLR.TypeSystem
         }
 
         public Dictionary<string, int> StaticFieldMapping { get { return staticFieldMapping; } }
-        public ILRuntime.Runtime.Enviorment.AppDomain AppDomain
+        public ILRuntime.Runtime.Environment.AppDomain AppDomain
         {
             get
             {
@@ -292,7 +292,7 @@ namespace ILRuntime.CLR.TypeSystem
         /// </summary>
         /// <param name="def">MONO返回的类型定义</param>
         /// <param name="domain">ILdomain</param>
-        public ILType ( TypeReference def, Runtime.Enviorment.AppDomain domain )
+        public ILType ( TypeReference def, Runtime.Environment.AppDomain domain )
         {
             this.typeRef = def;
             RetriveDefinitino ( def );

@@ -53,7 +53,7 @@ namespace ILRuntime.CLR.TypeSystem
 
         int TypeIndex { get; }
 
-        ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; }
+        ILRuntime.Runtime.Environment.AppDomain AppDomain { get; }
 
         /// <summary>
         /// Get a specified Method in this type

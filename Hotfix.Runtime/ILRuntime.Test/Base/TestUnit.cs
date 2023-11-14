@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using ILRuntime.CLR.Method;
 using ILRuntime.Runtime.Intepreter;
-using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
+using AppDomain = ILRuntime.Runtime.Environment.AppDomain;
 
 namespace ILRuntime.Test
 {

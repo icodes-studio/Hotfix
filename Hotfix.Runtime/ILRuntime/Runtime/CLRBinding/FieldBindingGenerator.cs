@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Text;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 
 namespace ILRuntime.Runtime.CLRBinding
 {
@@ -39,7 +39,7 @@ namespace ILRuntime.Runtime.CLRBinding
             return sb.ToString();
         }
 
-        internal static string GenerateFieldWraperCode(this Type type, FieldInfo[] fields, string typeClsName, HashSet<FieldInfo> excludes, List<Type> valueTypeBinders, Enviorment.AppDomain domain)
+        internal static string GenerateFieldWraperCode(this Type type, FieldInfo[] fields, string typeClsName, HashSet<FieldInfo> excludes, List<Type> valueTypeBinders, Environment.AppDomain domain)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -120,7 +120,7 @@ namespace ILRuntime.Runtime.CLRBinding
                     sb.AppendLine();
                     sb.AppendLine(string.Format("        static StackObject* AssignFromStack_{0}_{1}(ref object o, ILIntepreter __intp, StackObject* ptr_of_this_method, AutoList __mStack)", i.Name, idx));
                     sb.AppendLine("        {");
-                    sb.AppendLine("            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;");
+                    sb.AppendLine("            ILRuntime.Runtime.Environment.AppDomain __domain = __intp.AppDomain;");
                     i.FieldType.AppendArgumentCode(sb, 0, i.Name, valueTypeBinders, false, false, false);
                     if (i.IsStatic)
                     {

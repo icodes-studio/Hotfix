@@ -7,7 +7,7 @@ using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     public interface CrossBindingAdaptorType
     {
@@ -37,7 +37,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public abstract Type AdaptorType { get; }
 
-        public abstract object CreateCLRInstance(Enviorment.AppDomain appdomain, ILTypeInstance instance);
+        public abstract object CreateCLRInstance(Environment.AppDomain appdomain, ILTypeInstance instance);
 
         internal IType RuntimeType { get { return type; } set { type = value; } }
 

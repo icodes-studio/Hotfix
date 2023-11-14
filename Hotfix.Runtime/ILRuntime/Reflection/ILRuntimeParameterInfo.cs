@@ -12,13 +12,13 @@ namespace ILRuntime.Reflection
     public class ILRuntimeParameterInfo : ParameterInfo
     {
         public IType IType { get; private set; }
-        public ILRuntime.Runtime.Enviorment.AppDomain AppDomain{ get; private set; }
+        public ILRuntime.Runtime.Environment.AppDomain AppDomain{ get; private set; }
 
         Mono.Cecil.ParameterDefinition definition;
         Attribute[] customAttributes;
         Type[] attributeTypes;
 
-        public ILRuntimeParameterInfo(Mono.Cecil.ParameterDefinition definition, IType type, MemberInfo member, ILRuntime.Runtime.Enviorment.AppDomain appdomain)
+        public ILRuntimeParameterInfo(Mono.Cecil.ParameterDefinition definition, IType type, MemberInfo member, ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
             this.IType = type;
             this.definition = definition;

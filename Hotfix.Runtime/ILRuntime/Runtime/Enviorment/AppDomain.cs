@@ -22,7 +22,7 @@ using AutoList = System.Collections.Generic.List<object>;
 #else
 using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     public unsafe delegate StackObject* CLRRedirectionDelegate(ILIntepreter intp, StackObject* esp, AutoList mStack, CLRMethod method, bool isNewObj);
     public delegate object CLRFieldGetterDelegate(ref object target);

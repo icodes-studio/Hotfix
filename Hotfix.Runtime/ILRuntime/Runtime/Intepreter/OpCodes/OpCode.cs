@@ -66,7 +66,7 @@ namespace ILRuntime.Runtime.Intepreter.OpCodes
             return ToString(null);
         }
 
-        public string ToString(Enviorment.AppDomain domain)
+        public string ToString(Environment.AppDomain domain)
         {
             string param = null;
             switch (Code)

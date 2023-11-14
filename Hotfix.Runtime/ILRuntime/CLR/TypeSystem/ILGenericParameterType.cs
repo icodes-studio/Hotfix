@@ -50,7 +50,7 @@ namespace ILRuntime.CLR.TypeSystem
             get { return name; }
         }
 
-        public Runtime.Enviorment.AppDomain AppDomain
+        public Runtime.Environment.AppDomain AppDomain
         {
             get { return null; }
         }

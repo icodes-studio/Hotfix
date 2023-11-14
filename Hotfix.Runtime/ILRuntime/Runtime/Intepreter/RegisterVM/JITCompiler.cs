@@ -15,7 +15,7 @@ namespace ILRuntime.Runtime.Intepreter.RegisterVM
     struct JITCompiler
     {
         public const int CallRegisterParamCount = 3;
-        Enviorment.AppDomain appdomain;
+        Environment.AppDomain appdomain;
         ILType declaringType;
         ILMethod method;
         MethodDefinition def;
@@ -23,7 +23,7 @@ namespace ILRuntime.Runtime.Intepreter.RegisterVM
         Dictionary<Instruction, int> entryMapping;
         Dictionary<int, int[]> jumptables;
 
-        public JITCompiler(Enviorment.AppDomain appDomain, ILType declaringType, ILMethod method)
+        public JITCompiler(Environment.AppDomain appDomain, ILType declaringType, ILMethod method)
         {
             this.appdomain = appDomain;
             this.declaringType = declaringType;

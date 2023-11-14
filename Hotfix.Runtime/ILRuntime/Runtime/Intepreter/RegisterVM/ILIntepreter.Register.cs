@@ -9,7 +9,7 @@ using ILRuntime.CLR.TypeSystem;
 using ILRuntime.CLR.Method;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.Runtime.Intepreter.OpCodes;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.CLR.Utils;
 
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG

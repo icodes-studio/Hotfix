@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 
@@ -22,7 +22,7 @@ namespace ILRuntime.Test
             var v = ILIntepreter.Minus(ptr, 1);
             *(long*)&v->Value = ins.RawValue;
         }
-        public override void RegisterCLRRedirection(ILRuntime.Runtime.Enviorment.AppDomain appdomain)
+        public override void RegisterCLRRedirection(ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
@@ -135,7 +135,7 @@ namespace ILRuntime.Test
             return res;
         }
 
-        public override void RegisterCLRRedirection(ILRuntime.Runtime.Enviorment.AppDomain appdomain)
+        public override void RegisterCLRRedirection(ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
@@ -360,7 +360,7 @@ namespace ILRuntime.Test
             ins.Z = *(float*)&v->Value;
         }
 
-        public override void RegisterCLRRedirection(ILRuntime.Runtime.Enviorment.AppDomain appdomain)
+        public override void RegisterCLRRedirection(ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
@@ -595,7 +595,7 @@ namespace ILRuntime.Test
             v = ILIntepreter.Minus(ptr, 2);
             mStack[v->Value] = ins.Value;
         }
-        public override void RegisterCLRRedirection(ILRuntime.Runtime.Enviorment.AppDomain appdomain)
+        public override void RegisterCLRRedirection(ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;

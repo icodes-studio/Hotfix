@@ -837,9 +837,9 @@ namespace LitJson
             {
                 obj_type = ((ILRuntime.Runtime.Intepreter.ILTypeInstance)obj).Type.ReflectionType;
             }
-            else if(obj is ILRuntime.Runtime.Enviorment.CrossBindingAdaptorType)
+            else if(obj is ILRuntime.Runtime.Environment.CrossBindingAdaptorType)
             {
-                obj_type = ((ILRuntime.Runtime.Enviorment.CrossBindingAdaptorType)obj).ILInstance.Type.ReflectionType;
+                obj_type = ((ILRuntime.Runtime.Environment.CrossBindingAdaptorType)obj).ILInstance.Type.ReflectionType;
             }
             else
                 obj_type = obj.GetType();
@@ -1070,7 +1070,7 @@ namespace LitJson
             custom_importers_table.Clear ();
         }
 
-        public unsafe static void RegisterILRuntimeCLRRedirection(ILRuntime.Runtime.Enviorment.AppDomain appdomain)
+        public unsafe static void RegisterILRuntimeCLRRedirection(ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
             foreach(var i in typeof(JsonMapper).GetMethods())
             {
@@ -1095,7 +1095,7 @@ namespace LitJson
 
         public unsafe static StackObject* JsonToObject(ILIntepreter intp, StackObject* esp, AutoList mStack, CLRMethod method, bool isNewObj)
         {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = intp.AppDomain;
+            ILRuntime.Runtime.Environment.AppDomain __domain = intp.AppDomain;
             StackObject* ptr_of_this_method;
             StackObject* __ret = ILIntepreter.Minus(esp, 1);
             ptr_of_this_method = ILIntepreter.Minus(esp, 1);
@@ -1109,7 +1109,7 @@ namespace LitJson
 
         public unsafe static StackObject* JsonToObject2(ILIntepreter intp, StackObject* esp, AutoList mStack, CLRMethod method, bool isNewObj)
         {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = intp.AppDomain;
+            ILRuntime.Runtime.Environment.AppDomain __domain = intp.AppDomain;
             StackObject* ptr_of_this_method;
             StackObject* __ret = ILIntepreter.Minus(esp, 1);
             ptr_of_this_method = ILIntepreter.Minus(esp, 1);
@@ -1123,7 +1123,7 @@ namespace LitJson
 
         public unsafe static StackObject* JsonToObject3(ILIntepreter intp, StackObject* esp, AutoList mStack, CLRMethod method, bool isNewObj)
         {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = intp.AppDomain;
+            ILRuntime.Runtime.Environment.AppDomain __domain = intp.AppDomain;
             StackObject* ptr_of_this_method;
             StackObject* __ret = ILIntepreter.Minus(esp, 1);
             ptr_of_this_method = ILIntepreter.Minus(esp, 1);

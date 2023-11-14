@@ -8,7 +8,7 @@ using ILRuntime.Runtime.Intepreter;
 using System.Reflection;
 using System.Threading;
 
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     public class CrossBindingCodeGenerator
     {
@@ -32,7 +32,7 @@ namespace ILRuntime.Runtime.Enviorment
             baseType.GetClassName(out clsName, out realClsName, out isByRef, true);
             sb.Append(@"using System;
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG
 using AutoList = System.Collections.Generic.List<object>;
@@ -66,7 +66,7 @@ namespace ");
             }
         }
 
-        public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+        public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
         {
             return new Adapter(appdomain, instance);
         }
@@ -78,14 +78,14 @@ namespace ");
             sb.AppendLine(@"
             bool isInvokingToString;
             ILTypeInstance instance;
-            ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+            ILRuntime.Runtime.Environment.AppDomain appdomain;
 
             public Adapter()
             {
 
             }
 
-            public Adapter(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+            public Adapter(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;

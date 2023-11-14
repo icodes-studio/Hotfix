@@ -7,7 +7,7 @@ using ILRuntime.CLR.Utils;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime.Stack;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG
 using AutoList = System.Collections.Generic.List<object>;
@@ -190,21 +190,21 @@ namespace ILRuntime.Runtime.Intepreter
             InitializeFields(type);
             if (initializeCLRInstance)
             {
-                if (type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                if (type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                 {
-                    clrInstance = ((Enviorment.CrossBindingAdaptor)type.FirstCLRBaseType).CreateCLRInstance(type.AppDomain, this);
+                    clrInstance = ((Environment.CrossBindingAdaptor)type.FirstCLRBaseType).CreateCLRInstance(type.AppDomain, this);
                 }
                 else
                 {
                     clrInstance = this;
                 }
-                if(type.FirstCLRInterface is Enviorment.CrossBindingAdaptor)
+                if(type.FirstCLRInterface is Environment.CrossBindingAdaptor)
                 {
                     if (clrInstance != this)//Only one CLRInstance is allowed atm, so implementing multiple interfaces is not supported
                     {
                         throw new NotSupportedException("Inheriting and implementing interface at the same time is not supported yet");
                     }
-                    clrInstance = ((Enviorment.CrossBindingAdaptor)type.FirstCLRInterface).CreateCLRInstance(type.AppDomain, this);
+                    clrInstance = ((Environment.CrossBindingAdaptor)type.FirstCLRInterface).CreateCLRInstance(type.AppDomain, this);
                 }
             }
             else
@@ -225,9 +225,9 @@ namespace ILRuntime.Runtime.Intepreter
                 }
                 else
                 {
-                    if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                    if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                     {
-                        CLRType clrType = type.AppDomain.GetType(((Enviorment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
+                        CLRType clrType = type.AppDomain.GetType(((Environment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
                         return clrType.GetFieldValue(index, clrInstance);
                     }
                     else
@@ -269,9 +269,9 @@ namespace ILRuntime.Runtime.Intepreter
                 }
                 else
                 {
-                    if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                    if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                     {
-                        CLRType clrType = type.AppDomain.GetType(((Enviorment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
+                        CLRType clrType = type.AppDomain.GetType(((Environment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
                         clrType.SetFieldValue(index, ref clrInstance, value);
                     }
                     else
@@ -314,9 +314,9 @@ namespace ILRuntime.Runtime.Intepreter
             }
             else
             {
-                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                 {
-                    CLRType clrType = type.AppDomain.GetType(((Enviorment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
+                    CLRType clrType = type.AppDomain.GetType(((Environment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
                     clrType.SetFieldValue(index, ref clrInstance, value);
                 }
                 else
@@ -439,9 +439,9 @@ namespace ILRuntime.Runtime.Intepreter
             }
             else
             {
-                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                 {
-                    CLRType clrType = intp.AppDomain.GetType(((Enviorment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
+                    CLRType clrType = intp.AppDomain.GetType(((Environment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
                     var obj = clrType.GetFieldValue(fieldIdx, clrInstance);
                     if (obj is CrossBindingAdaptorType)
                         obj = ((CrossBindingAdaptorType)obj).ILInstance;
@@ -464,9 +464,9 @@ namespace ILRuntime.Runtime.Intepreter
             }
             else
             {
-                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                 {
-                    CLRType clrType = info.Intepreter.AppDomain.GetType(((Enviorment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
+                    CLRType clrType = info.Intepreter.AppDomain.GetType(((Environment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
                     var obj = clrType.GetFieldValue(fieldIdx, clrInstance);
                     if (obj is CrossBindingAdaptorType)
                         obj = ((CrossBindingAdaptorType)obj).ILInstance;
@@ -583,15 +583,15 @@ namespace ILRuntime.Runtime.Intepreter
             throw new NotImplementedException();
         }
 
-        internal unsafe void AssignFromStack(int fieldIdx, StackObject* esp, Enviorment.AppDomain appdomain, AutoList managedStack)
+        internal unsafe void AssignFromStack(int fieldIdx, StackObject* esp, Environment.AppDomain appdomain, AutoList managedStack)
         {
             if (fieldIdx < fields.Length && fieldIdx >= 0)
                 AssignFromStackSub(ref fields[fieldIdx], fieldIdx, esp, managedStack);
             else
             {
-                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Enviorment.CrossBindingAdaptor)
+                if (Type.FirstCLRBaseType != null && Type.FirstCLRBaseType is Environment.CrossBindingAdaptor)
                 {
-                    CLRType clrType = appdomain.GetType(((Enviorment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
+                    CLRType clrType = appdomain.GetType(((Environment.CrossBindingAdaptor)Type.FirstCLRBaseType).BaseCLRType) as CLRType;
                     var field = clrType.GetField(fieldIdx);
                     clrType.SetFieldValue(fieldIdx, ref clrInstance, field.FieldType.CheckCLRTypes(ILIntepreter.CheckAndCloneValueType(StackObject.ToObject(esp, appdomain, managedStack), appdomain)));
                 }
@@ -600,7 +600,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        internal unsafe void AssignFromStack(StackObject* esp, Enviorment.AppDomain appdomain, AutoList managedStack)
+        internal unsafe void AssignFromStack(StackObject* esp, Environment.AppDomain appdomain, AutoList managedStack)
         {
             StackObject* val = ILIntepreter.ResolveReference(esp);
             int cnt = val->ValueLow;

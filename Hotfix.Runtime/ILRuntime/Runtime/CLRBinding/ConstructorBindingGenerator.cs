@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Text;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 
 namespace ILRuntime.Runtime.CLRBinding
 {
@@ -64,7 +64,7 @@ namespace ILRuntime.Runtime.CLRBinding
                 int paramCnt = param.Length;
                 sb.AppendLine(string.Format("        static StackObject* Ctor_{0}(ILIntepreter __intp, StackObject* __esp, AutoList __mStack, CLRMethod __method, bool isNewObj)", idx));
                 sb.AppendLine("        {");
-                sb.AppendLine("            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;");
+                sb.AppendLine("            ILRuntime.Runtime.Environment.AppDomain __domain = __intp.AppDomain;");
                 if (param.Length != 0)
                     sb.AppendLine("            StackObject* ptr_of_this_method;");
                 sb.AppendLine(string.Format("            StackObject* __ret = ILIntepreter.Minus(__esp, {0});", paramCnt));

@@ -6,7 +6,7 @@ using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime.Intepreter;
 
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     #region Functions
     public class CrossBindingFunctionInfo<T1, T2, T3, T4, T5, TResult> : CrossBindingMethodInfo

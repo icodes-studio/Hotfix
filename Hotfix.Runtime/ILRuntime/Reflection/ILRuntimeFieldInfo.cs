@@ -10,7 +10,7 @@ using ILRuntime.CLR.Utils;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime;
 using ILRuntime.Runtime.Stack;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 
 namespace ILRuntime.Reflection
@@ -25,7 +25,7 @@ namespace ILRuntime.Reflection
         int fieldIdx;
         string name;
         FieldDefinition definition;
-        Runtime.Enviorment.AppDomain appdomain;
+        Runtime.Environment.AppDomain appdomain;
         Attribute[] customAttributes;
         Type[] attributeTypes;
 

@@ -15,7 +15,7 @@ namespace ILRuntime.Reflection
         ILMethod getter, setter;
         ILType dType;
         Mono.Cecil.PropertyDefinition definition;
-        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+        ILRuntime.Runtime.Environment.AppDomain appdomain;
         ILRuntimeParameterInfo[] parameters;
 
         Attribute[] customAttributes;

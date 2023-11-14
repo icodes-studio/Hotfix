@@ -173,9 +173,9 @@ namespace ILRuntime.Runtime.Debugger
                     {
                         info.TypeName = ((Intepreter.ILTypeInstance)obj).Type.FullName;                        
                     }
-                    else if (obj is Enviorment.CrossBindingAdaptorType)
+                    else if (obj is Environment.CrossBindingAdaptorType)
                     {
-                        info.TypeName = ((Enviorment.CrossBindingAdaptorType)obj).ILInstance.Type.FullName;
+                        info.TypeName = ((Environment.CrossBindingAdaptorType)obj).ILInstance.Type.FullName;
                     }
                     else
                     {

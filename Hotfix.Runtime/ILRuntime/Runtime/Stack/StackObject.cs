@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 using ILRuntime.CLR.TypeSystem;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG
 using AutoList = System.Collections.Generic.List<object>;
@@ -33,12 +33,12 @@ namespace ILRuntime.Runtime.Stack
             return (a.ObjectType != b.ObjectType) || (a.Value != b.Value) || (a.ValueLow == b.ValueLow);
         }
 
-        public static unsafe object ToObject(StackObject* esp, ILRuntime.Runtime.Enviorment.AppDomain appdomain, IList<object> mStack)
+        public static unsafe object ToObject(StackObject* esp, ILRuntime.Runtime.Environment.AppDomain appdomain, IList<object> mStack)
         {
             return ToObject(esp, appdomain, (AutoList)mStack);
         }
         //IL2CPP can't process esp->ToObject() properly, so I can only use static function for this
-        public static unsafe object ToObject(StackObject* esp, ILRuntime.Runtime.Enviorment.AppDomain appdomain, AutoList mStack)
+        public static unsafe object ToObject(StackObject* esp, ILRuntime.Runtime.Environment.AppDomain appdomain, AutoList mStack)
         {
             switch (esp->ObjectType)
             {

@@ -9,7 +9,7 @@ using ILRuntime.Runtime.Generated;
 using ILRuntime.Mono.Cecil.Cil;
 using ILRuntime.Mono.Cecil.Pdb;
 using ILRuntime.Mono.Cecil.Mdb;
-using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
+using AppDomain = ILRuntime.Runtime.Environment.AppDomain;
 
 namespace ILRuntime.Test
 {

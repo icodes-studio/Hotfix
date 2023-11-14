@@ -7,7 +7,7 @@ using ILRuntime.CLR.Method;
 using ILRuntime.Runtime;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.Other;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG
 using AutoList = System.Collections.Generic.List<object>;
 #else
@@ -33,7 +33,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private FunctionDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private FunctionDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -64,7 +64,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new FunctionDelegateAdapter<TResult>(appdomain, instance, method);
         }
@@ -105,7 +105,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private FunctionDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private FunctionDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -137,7 +137,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new FunctionDelegateAdapter<T1, TResult>(appdomain, instance, method);
         }
@@ -179,7 +179,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private FunctionDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private FunctionDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -212,7 +212,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new FunctionDelegateAdapter<T1, T2, TResult>(appdomain, instance, method);
         }
@@ -256,7 +256,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private FunctionDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private FunctionDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -290,7 +290,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new FunctionDelegateAdapter<T1, T2, T3, TResult>(appdomain, instance, method);
         }
@@ -334,7 +334,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private FunctionDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private FunctionDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -369,7 +369,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new FunctionDelegateAdapter<T1, T2, T3, T4, TResult>(appdomain, instance, method);
         }
@@ -409,7 +409,7 @@ namespace ILRuntime.Runtime.Intepreter
             
         }
 
-        private MethodDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private MethodDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -439,7 +439,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new MethodDelegateAdapter<T1>(appdomain, instance, method);
         }
@@ -481,7 +481,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private MethodDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private MethodDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -511,7 +511,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new MethodDelegateAdapter<T1, T2>(appdomain, instance, method);
         }
@@ -554,7 +554,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private MethodDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private MethodDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -585,7 +585,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new MethodDelegateAdapter<T1, T2, T3>(appdomain, instance, method);
         }
@@ -629,7 +629,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private MethodDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private MethodDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -661,7 +661,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new MethodDelegateAdapter<T1, T2, T3, T4>(appdomain, instance, method);
         }
@@ -707,7 +707,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        private MethodDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        private MethodDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -740,7 +740,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new MethodDelegateAdapter<T1, T2, T3, T4, T5>(appdomain, instance, method);
         }
@@ -773,7 +773,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        protected MethodDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        protected MethodDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             action = InvokeILMethod;
@@ -801,7 +801,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new MethodDelegateAdapter(appdomain, instance, method);
         }
@@ -831,7 +831,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         }
 
-        protected DummyDelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        protected DummyDelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
             : base(appdomain, instance, method)
         {
             
@@ -860,7 +860,7 @@ namespace ILRuntime.Runtime.Intepreter
                 appdomain.Invoke(method, null, null);
         }
 
-        public override IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        public override IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             return new DummyDelegateAdapter(appdomain, instance, method);
         }
@@ -888,7 +888,7 @@ namespace ILRuntime.Runtime.Intepreter
     {
         protected ILMethod method;
         protected ILTypeInstance instance;
-        protected Enviorment.AppDomain appdomain;
+        protected Environment.AppDomain appdomain;
         Dictionary<Type, Delegate> converters;
         IDelegateAdapter next;
         protected bool isClone;
@@ -905,7 +905,7 @@ namespace ILRuntime.Runtime.Intepreter
 
         protected DelegateAdapter() { }
 
-        protected DelegateAdapter(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
+        protected DelegateAdapter(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method)
         {
             this.appdomain = appdomain;
             this.instance = instance;
@@ -1020,7 +1020,7 @@ namespace ILRuntime.Runtime.Intepreter
             return returnVal;
         }
 
-        public abstract IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method);
+        public abstract IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method);
 
         public new abstract IDelegateAdapter Clone();
 
@@ -1216,7 +1216,7 @@ namespace ILRuntime.Runtime.Intepreter
         ILTypeInstance Instance { get; }
         ILMethod Method { get; }
         StackObject* ILInvoke(ILIntepreter intp, StackObject* esp, AutoList mStack);
-        IDelegateAdapter Instantiate(Enviorment.AppDomain appdomain, ILTypeInstance instance, ILMethod method);
+        IDelegateAdapter Instantiate(Environment.AppDomain appdomain, ILTypeInstance instance, ILMethod method);
         bool IsClone { get; }
         IDelegateAdapter Clone();
         Delegate GetConvertor(Type type);

@@ -1,6 +1,6 @@
 ﻿using System;
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 
 namespace ILRuntime.Test
@@ -23,7 +23,7 @@ namespace ILRuntime.Test
             }
         }
 
-        public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+        public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
         {
             return new IAsyncStateMachineAdaptor(appdomain, instance);
         }
@@ -31,7 +31,7 @@ namespace ILRuntime.Test
         public class IAsyncStateMachineAdaptor : System.Runtime.CompilerServices.IAsyncStateMachine, CrossBindingAdaptorType
         {
             ILTypeInstance instance;
-            ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+            ILRuntime.Runtime.Environment.AppDomain appdomain;
             CrossBindingMethodInfo mMoveNext_0 = new CrossBindingMethodInfo("MoveNext");
             CrossBindingMethodInfo<System.Runtime.CompilerServices.IAsyncStateMachine> mSetStateMachine_1 = new CrossBindingMethodInfo<System.Runtime.CompilerServices.IAsyncStateMachine>("SetStateMachine");
 
@@ -40,7 +40,7 @@ namespace ILRuntime.Test
 
             }
 
-            public IAsyncStateMachineAdaptor(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+            public IAsyncStateMachineAdaptor(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;

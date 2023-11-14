@@ -13,7 +13,7 @@ namespace ILRuntime.Reflection
     public class ILRuntimeType : Type
     {
         ILType type;
-        Runtime.Enviorment.AppDomain appdomain;
+        Runtime.Environment.AppDomain appdomain;
         Attribute[] customAttributes;
         Type[] attributeTypes;
         ILRuntimeFieldInfo[] fields;

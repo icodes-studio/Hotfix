@@ -5,7 +5,7 @@ using System.Text;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.CLR.Method;
 using ILRuntime.Other;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 
 namespace ILRuntime.Test
@@ -28,7 +28,7 @@ namespace ILRuntime.Test
     //        }
     //    }
 
-    //    public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+    //    public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
     //    {
     //        return new Adaptor(appdomain, instance);
     //    }
@@ -36,7 +36,7 @@ namespace ILRuntime.Test
     //    internal class Adaptor : ClassInheritanceTest, CrossBindingAdaptorType
     //    {
     //        ILTypeInstance instance;
-    //        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+    //        ILRuntime.Runtime.Environment.AppDomain appdomain;
     //        IMethod mTestAbstract;
     //        IMethod mTestVirtual;
     //        bool isTestVirtualInvoking = false;
@@ -46,7 +46,7 @@ namespace ILRuntime.Test
 
     //        }
 
-    //        public Adaptor(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+    //        public Adaptor(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
     //        {
     //            this.appdomain = appdomain;
     //            this.instance = instance;
@@ -111,7 +111,7 @@ namespace ILRuntime.Test
     //        }
     //    }
 
-    //    public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+    //    public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
     //    {
     //        return new ClassInheritanceAdaptor.Adaptor(appdomain, instance);
     //    }        

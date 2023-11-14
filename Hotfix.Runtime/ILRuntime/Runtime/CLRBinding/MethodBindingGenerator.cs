@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Text;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.CLRBinding
@@ -154,7 +154,7 @@ namespace ILRuntime.Runtime.CLRBinding
             return sb.ToString();
         }
     
-        internal static string GenerateMethodWraperCode(this Type type, MethodInfo[] methods, string typeClsName, HashSet<MethodBase> excludes, List<Type> valueTypeBinders, Enviorment.AppDomain domain)
+        internal static string GenerateMethodWraperCode(this Type type, MethodInfo[] methods, string typeClsName, HashSet<MethodBase> excludes, List<Type> valueTypeBinders, Environment.AppDomain domain)
         {
             StringBuilder sb = new StringBuilder();
             bool isMultiArr = type.IsArray && type.GetArrayRank() > 1;
@@ -172,7 +172,7 @@ namespace ILRuntime.Runtime.CLRBinding
                     paramCnt++;
                 sb.AppendLine(string.Format("        static StackObject* {0}_{1}(ILIntepreter __intp, StackObject* __esp, AutoList __mStack, CLRMethod __method, bool isNewObj)", i.Name, idx));
                 sb.AppendLine("        {");
-                sb.AppendLine("            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;");
+                sb.AppendLine("            ILRuntime.Runtime.Environment.AppDomain __domain = __intp.AppDomain;");
                 if (param.Length != 0 || !i.IsStatic)
                     sb.AppendLine("            StackObject* ptr_of_this_method;");
                 sb.AppendLine(string.Format("            StackObject* __ret = ILIntepreter.Minus(__esp, {0});", paramCnt));

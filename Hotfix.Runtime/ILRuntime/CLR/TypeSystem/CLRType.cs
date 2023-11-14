@@ -7,7 +7,7 @@ using System.Reflection;
 using ILRuntime.Mono.Cecil;
 using ILRuntime.CLR.Method;
 using ILRuntime.Reflection;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Stack;
 
 #if DEBUG && !DISABLE_ILRUNTIME_DEBUG
@@ -22,7 +22,7 @@ namespace ILRuntime.CLR.TypeSystem
         Type clrType;
         bool isPrimitive, isValueType, isEnum;
         Dictionary<string, List<CLRMethod>> methods;
-        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+        ILRuntime.Runtime.Environment.AppDomain appdomain;
         List<CLRMethod> constructors;
         KeyValuePair<string, IType>[] genericArguments;
         List<CLRType> genericInstances;
@@ -94,7 +94,7 @@ namespace ILRuntime.CLR.TypeSystem
             }
         }
 
-        public ILRuntime.Runtime.Enviorment.AppDomain AppDomain
+        public ILRuntime.Runtime.Environment.AppDomain AppDomain
         {
             get
             {
@@ -102,7 +102,7 @@ namespace ILRuntime.CLR.TypeSystem
             }
         }
 
-        public CLRType(Type clrType, Runtime.Enviorment.AppDomain appdomain)
+        public CLRType(Type clrType, Runtime.Environment.AppDomain appdomain)
         {
             this.clrType = clrType;
             this.appdomain = appdomain;

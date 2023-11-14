@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Text;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.CLRBinding
@@ -379,7 +379,7 @@ namespace ILRuntime.Runtime.CLRBinding
             }
         }
 
-        internal static void GetReturnValueCode(this Type type, StringBuilder sb, Enviorment.AppDomain domain)
+        internal static void GetReturnValueCode(this Type type, StringBuilder sb, Environment.AppDomain domain)
         {
             if (type.IsPrimitive)
             {
@@ -478,7 +478,7 @@ namespace ILRuntime.Runtime.CLRBinding
             }
         }
 
-        static bool CheckAssignableToCrossBindingAdapters(Enviorment.AppDomain domain, Type type)
+        static bool CheckAssignableToCrossBindingAdapters(Environment.AppDomain domain, Type type)
         {
             if (type == typeof(object))
                 return true;

@@ -22,7 +22,7 @@ namespace ILRuntime.CLR.Method
         bool symbolFixed;
         MethodDefinition def;
         List<IType> parameters;
-        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+        ILRuntime.Runtime.Environment.AppDomain appdomain;
         ILType declaringType;
         ExceptionHandler[] exceptionHandler, exceptionHandlerR;
         KeyValuePair<string, IType>[] genericParameters;
@@ -67,7 +67,7 @@ namespace ILRuntime.CLR.Method
 
         internal int EndLine { get; set; }
 
-        public ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get { return appdomain; } }
+        public ILRuntime.Runtime.Environment.AppDomain AppDomain { get { return appdomain; } }
 
         public MethodInfo ReflectionMethodInfo
         {
@@ -194,7 +194,7 @@ namespace ILRuntime.CLR.Method
                 }
             }
         }
-        public ILMethod(MethodDefinition def, ILType type, ILRuntime.Runtime.Enviorment.AppDomain domain, int flags)
+        public ILMethod(MethodDefinition def, ILType type, ILRuntime.Runtime.Environment.AppDomain domain, int flags)
         {
             this.def = def;
             declaringType = type;

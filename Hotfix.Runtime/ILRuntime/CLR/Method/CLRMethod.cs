@@ -1,6 +1,6 @@
 ﻿using ILRuntime.CLR.TypeSystem;
 using ILRuntime.CLR.Utils;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 using System;
@@ -20,7 +20,7 @@ namespace ILRuntime.CLR.Method
         ConstructorInfo cDef;
         List<IType> parameters;
         ParameterInfo[] parametersCLR;
-        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+        ILRuntime.Runtime.Environment.AppDomain appdomain;
         CLRType declaringType;
         bool isConstructor;
         CLRRedirectionDelegate redirect;
@@ -151,7 +151,7 @@ namespace ILRuntime.CLR.Method
             }
         }
 
-        internal CLRMethod(MethodInfo def, CLRType type, ILRuntime.Runtime.Enviorment.AppDomain domain)
+        internal CLRMethod(MethodInfo def, CLRType type, ILRuntime.Runtime.Environment.AppDomain domain)
         {
             this.def = def;
             declaringType = type;
@@ -177,7 +177,7 @@ namespace ILRuntime.CLR.Method
             }
             isConstructor = false;
         }
-        internal CLRMethod(ConstructorInfo def, CLRType type, ILRuntime.Runtime.Enviorment.AppDomain domain)
+        internal CLRMethod(ConstructorInfo def, CLRType type, ILRuntime.Runtime.Environment.AppDomain domain)
         {
             this.cDef = def;
             declaringType = type;

@@ -18,7 +18,7 @@ namespace ILRuntime.CLR.Utils
     public static class Extensions
     {
         public static List<IType> EmptyParamList = new List<IType>();
-        public static List<IType> GetParamList(this MethodReference def, ILRuntime.Runtime.Enviorment.AppDomain appdomain, IType contextType, IMethod contextMethod, IType[] genericArguments)
+        public static List<IType> GetParamList(this MethodReference def, ILRuntime.Runtime.Environment.AppDomain appdomain, IType contextType, IMethod contextMethod, IType[] genericArguments)
         {
             if (def.HasParameters)
             {
@@ -98,7 +98,7 @@ namespace ILRuntime.CLR.Utils
             List<string> ga;
             bool isArray;
             byte rank;
-            Runtime.Enviorment.AppDomain.ParseGenericType(typename, out baseType, out ga, out isArray, out rank);
+            Runtime.Environment.AppDomain.ParseGenericType(typename, out baseType, out ga, out isArray, out rank);
             string baseTypeQualification = null;
             bool hasGA = ga != null && ga.Count > 0;
             if (baseType == argumentName)

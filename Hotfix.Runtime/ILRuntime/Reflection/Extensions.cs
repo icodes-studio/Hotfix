@@ -11,7 +11,7 @@ namespace ILRuntime.Reflection
 {
     static class Extensions
     {
-        public static object CreateInstance(this CustomAttribute attribute, IType at, Runtime.Enviorment.AppDomain appdomain)
+        public static object CreateInstance(this CustomAttribute attribute, IType at, Runtime.Environment.AppDomain appdomain)
         {
             object ins;
             List<IType> param = null;

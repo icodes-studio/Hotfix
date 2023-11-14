@@ -364,7 +364,7 @@ namespace ILRuntime.Runtime.Debugger
                 clientSocket.Send(type, sendStream.GetBuffer(), (int)sendStream.Position);
         }
 
-        bool CheckCompilerGeneratedStateMachine(ILMethod ilm, Enviorment.AppDomain domain, int startLine, out ILMethod found)
+        bool CheckCompilerGeneratedStateMachine(ILMethod ilm, Environment.AppDomain domain, int startLine, out ILMethod found)
         {
             var mDef = ilm.Definition;
             Mono.Cecil.CustomAttribute ca = null;

@@ -1,6 +1,6 @@
 using System;
 using ILRuntime.CLR.Method;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 
 namespace ILRuntime.Test
@@ -23,7 +23,7 @@ namespace ILRuntime.Test
             }
         }
 
-        public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+        public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
         {
             return new Adapter(appdomain, instance);
         }
@@ -81,14 +81,14 @@ namespace ILRuntime.Test
 
             bool isInvokingToString;
             ILTypeInstance instance;
-            ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+            ILRuntime.Runtime.Environment.AppDomain appdomain;
 
             public Adapter()
             {
 
             }
 
-            public Adapter(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+            public Adapter(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;
@@ -170,7 +170,7 @@ namespace ILRuntime.Test
             }
         }
 
-        public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+        public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
         {
             return new Adapter(appdomain, instance);
         }
@@ -179,14 +179,14 @@ namespace ILRuntime.Test
         {
             CrossBindingMethodInfo mDispose_0 = new CrossBindingMethodInfo("Dispose");
             ILTypeInstance instance;
-            ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+            ILRuntime.Runtime.Environment.AppDomain appdomain;
 
             public Adapter()
             {
 
             }
 
-            public Adapter(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+            public Adapter(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;

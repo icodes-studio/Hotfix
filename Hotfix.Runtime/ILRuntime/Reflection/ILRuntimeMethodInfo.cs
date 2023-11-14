@@ -8,7 +8,7 @@ using System.Globalization;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.Utils;
 using ILRuntime.Runtime.Intepreter;
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.CLR.TypeSystem;
 
 namespace ILRuntime.Reflection
@@ -18,7 +18,7 @@ namespace ILRuntime.Reflection
         ILMethod method;
         ILRuntimeParameterInfo[] parameters;
         Mono.Cecil.MethodDefinition definition;
-        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+        ILRuntime.Runtime.Environment.AppDomain appdomain;
 
         Attribute[] customAttributes;
         Type[] attributeTypes;

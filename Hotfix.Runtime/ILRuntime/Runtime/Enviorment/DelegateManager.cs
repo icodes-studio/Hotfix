@@ -8,7 +8,7 @@ using ILRuntime.CLR.Method;
 using ILRuntime.Other;
 using ILRuntime.Runtime.Intepreter;
 
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     public class DelegateManager
     {
@@ -18,8 +18,8 @@ namespace ILRuntime.Runtime.Enviorment
         IDelegateAdapter dummyAdapter = new DummyDelegateAdapter();
         Dictionary<Type, Func<Delegate, Delegate>> clrDelegates = new Dictionary<Type, Func<Delegate, Delegate>>(new ByReferenceKeyComparer<Type>());
         Func<Delegate, Delegate> defaultConverter;
-        Enviorment.AppDomain appdomain;
-        public DelegateManager(Enviorment.AppDomain appdomain)
+        Environment.AppDomain appdomain;
+        public DelegateManager(Environment.AppDomain appdomain)
         {
             this.appdomain = appdomain;
             defaultConverter = DefaultConverterStub;
@@ -43,7 +43,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterMethodDelegate<T1>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new MethodDelegateAdapter<T1>();
             node.ParameterTypes = new Type[] { typeof(T1) };
             methods.Add(node);
@@ -52,7 +52,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterMethodDelegate<T1, T2>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new MethodDelegateAdapter<T1, T2>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2) };
             methods.Add(node);
@@ -61,7 +61,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterMethodDelegate<T1, T2, T3>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new MethodDelegateAdapter<T1, T2, T3>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(T3) };
             methods.Add(node);
@@ -70,7 +70,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterMethodDelegate<T1, T2, T3, T4>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new MethodDelegateAdapter<T1, T2, T3, T4>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) };
             methods.Add(node);
@@ -80,7 +80,7 @@ namespace ILRuntime.Runtime.Enviorment
 #if NET_4_6 || NET_STANDARD_2_0
         public void RegisterMethodDelegate<T1, T2, T3, T4, T5>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new MethodDelegateAdapter<T1, T2, T3, T4, T5>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) };
             methods.Add(node);
@@ -90,7 +90,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterFunctionDelegate<TResult>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new FunctionDelegateAdapter<TResult>();
             node.ParameterTypes = new Type[] { typeof(TResult) };
             functions.Add(node);
@@ -99,7 +99,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterFunctionDelegate<T1, TResult>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new FunctionDelegateAdapter<T1, TResult>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(TResult) };
             functions.Add(node);
@@ -108,7 +108,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterFunctionDelegate<T1, T2, TResult>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new FunctionDelegateAdapter<T1, T2, TResult>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(TResult) };
             functions.Add(node);
@@ -117,7 +117,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterFunctionDelegate<T1, T2, T3, TResult>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new FunctionDelegateAdapter<T1, T2, T3, TResult>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(TResult) };
             functions.Add(node);
@@ -126,7 +126,7 @@ namespace ILRuntime.Runtime.Enviorment
 
         public void RegisterFunctionDelegate<T1, T2, T3, T4, TResult>()
         {
-            DelegateMapNode node = new Enviorment.DelegateManager.DelegateMapNode();
+            DelegateMapNode node = new Environment.DelegateManager.DelegateMapNode();
             node.Adapter = new FunctionDelegateAdapter<T1, T2, T3, T4, TResult>();
             node.ParameterTypes = new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(TResult) };
             functions.Add(node);

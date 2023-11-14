@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
@@ -21,7 +21,7 @@ namespace ILRuntime.Runtime.Intepreter
 {
     public unsafe partial class ILIntepreter
     {
-        Enviorment.AppDomain domain;
+        Environment.AppDomain domain;
         RuntimeStack stack;
         object _lockObj;
         bool allowUnboundCLRMethod;
@@ -34,7 +34,7 @@ namespace ILRuntime.Runtime.Intepreter
         StackObject* ValueTypeBasePointer;
 #pragma warning disable CS0414
         bool mainthreadLock;
-        public ILIntepreter(Enviorment.AppDomain domain)
+        public ILIntepreter(Environment.AppDomain domain)
         {
             this.domain = domain;
             stack = new RuntimeStack(this);
@@ -44,7 +44,7 @@ namespace ILRuntime.Runtime.Intepreter
 #endif
         }
 
-        public Enviorment.AppDomain AppDomain { get { return domain; } }
+        public Environment.AppDomain AppDomain { get { return domain; } }
 
         public void Break()
         {
@@ -5747,7 +5747,7 @@ namespace ILRuntime.Runtime.Intepreter
             }
         }
 
-        internal static object CheckAndCloneValueType(object obj, Enviorment.AppDomain domain)
+        internal static object CheckAndCloneValueType(object obj, Environment.AppDomain domain)
         {
             if (obj != null)
             {
@@ -5808,12 +5808,12 @@ namespace ILRuntime.Runtime.Intepreter
         }
 
         [Obsolete]
-        public static void UnboxObject(StackObject* esp, object obj, IList<object> mStack = null, Enviorment.AppDomain domain = null)
+        public static void UnboxObject(StackObject* esp, object obj, IList<object> mStack = null, Environment.AppDomain domain = null)
         {
             UnboxObject(esp, obj, (AutoList)mStack, domain);
         }
 
-        public static void UnboxObject(StackObject* esp, object obj, AutoList mStack = null, Enviorment.AppDomain domain = null)
+        public static void UnboxObject(StackObject* esp, object obj, AutoList mStack = null, Environment.AppDomain domain = null)
         {
             if (esp->ObjectType == ObjectTypes.ValueTypeObjectReference && domain != null)
             {

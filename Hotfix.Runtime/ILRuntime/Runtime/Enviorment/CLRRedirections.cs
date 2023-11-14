@@ -16,7 +16,7 @@ using AutoList = System.Collections.Generic.List<object>;
 #else
 using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
-namespace ILRuntime.Runtime.Enviorment
+namespace ILRuntime.Runtime.Environment
 {
     unsafe static class CLRRedirections
     {
