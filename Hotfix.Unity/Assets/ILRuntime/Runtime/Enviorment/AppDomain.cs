@@ -1629,7 +1629,7 @@ namespace ILRuntime.Runtime.Environment
             {
                 throw new NotImplementedException();
                 //Mono.Cecil.GenericInstanceMethod gmethod = _def as Mono.Cecil.GenericInstanceMethod;
-                //genlist = new MethodParamList(Environment, gmethod);
+                //genlist = new MethodParamList(environment, gmethod);
             }
 
             if (isConstructor)

@@ -19,6 +19,14 @@
         - *https://github.com/yasirkula/UnityIngameDebugConsole*
         - *https://assetstore.unity.com/packages/tools/gui/in-game-debug-console-68068*
 - **Developed & tested with**
-    - *Unity 2022.3.4f1*
-    - *Unity 2021.3.29f1*
-    - *Unity 2020.3.39f1*       
+    - ***Hotfix.Runtime***
+        - *Visual Studio 2022*
+        - *.NET Standard 2.1*
+        - *.NET 7*
+    - ***Hotfix.Unity***
+        - *Unity 2022.3.4f1*
+        - *Unity 2021.3.29f1*
+        - *Unity 2020.3.39f1*
+    - ***Hotfix***
+        - *Visual Studio 2022*
+        - *.NET Framework 4.8*

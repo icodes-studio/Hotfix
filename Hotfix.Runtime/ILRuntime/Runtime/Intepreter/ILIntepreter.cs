@@ -5910,7 +5910,6 @@ namespace ILRuntime.Runtime.Intepreter
                 throw new NotImplementedException();
         }
 
-        [Obsolete]
         public static StackObject* PushObject(StackObject* esp, IList<object> mStack, object obj, bool isBox = false)
         {
             return PushObject(esp, (AutoList)mStack, obj, isBox);
