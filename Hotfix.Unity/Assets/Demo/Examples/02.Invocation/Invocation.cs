@@ -11,7 +11,7 @@ namespace Hotfix.Demo
             // Calling a static method without parameters.
             domain.Invoke("Hotfix.TestClass", "HelloWorld", null, null);
 
-            // Call static method with parameters.
+            // Calling a static method with parameters.
             domain.Invoke("Hotfix.TestClass", "StaticMethod", null, 123);
 
             // How to call via IMethod - You can reduce the time to find methods.
@@ -32,9 +32,19 @@ namespace Hotfix.Demo
             method = type.GetMethod("StaticMethod", parameters, null);
             domain.Invoke(method, null, 456);
 
+            // How to call from overloaded method.
+            var floatType = domain.GetType(typeof(float));
+            parameters = new List<IType> { floatType };
+            method = type.GetMethod("StaticMethod", parameters, null);
+            domain.Invoke(method, null, 456.789f);
+
             // Create an instance of Hotfix.TestClass via AppDomain.
             object obj = domain.Instantiate("Hotfix.TestClass", new object[] { 233 });
             method = type.GetMethod("get_ID", 0);
+            object result = domain.Invoke(method, obj, null);
+            Debug.Log($"Hotfix.TestClass.ID = {result}");
+
+            // How to get a property value using stack allocation.
             using (var context = domain.BeginInvoke(method))
             {
                 context.PushObject(obj);
@@ -53,7 +63,7 @@ namespace Hotfix.Demo
                 Debug.Log($"Hotfix.TestClass.ID = {id}");
             }
 
-            // Generic method call.
+            // Calling a generic method.
             IType stringType = domain.GetType(typeof(string));
             IType[] genericArguments = new IType[] { stringType };
             domain.InvokeGenericMethod("Hotfix.TestClass", "GenericMethod", genericArguments, null, "TestString");
@@ -70,17 +80,17 @@ namespace Hotfix.Demo
             int initialVal = 500;
             using (var context = domain.BeginInvoke(method))
             {
-                // Push null value for the first ref/out parameter
+                // Push null value for the first out parameter
                 context.PushObject(null);
-                // Push initial value for the second ref/out parameter
+                // Push initial value for the second ref parameter
                 context.PushInteger(initialVal);
-                // this
+                // Push this
                 context.PushObject(obj);
                 // Parameter 1
                 context.PushInteger(100);
-                // Parameter 2: It's a ref/out, We need to push a reference. The reference position 0 is the position of the first PushObject(null)
+                // Parameter 2: It's an out The reference position 0 is the position of the first PushObject(null)
                 context.PushReference(0);
-                // Parameter 3: It's a ref/out, We need to push a reference. The reference position 1 is the position of the second PushObject(initialVal)
+                // Parameter 3: It's a ref. The reference position 1 is the position of the second PushObject(initialVal)
                 context.PushReference(1);
                 // Calling method
                 context.Invoke();

@@ -30,6 +30,11 @@ namespace Hotfix
             Debug.Log($"{nameof(TestClass)}.{nameof(StaticMethod)}({a})");
         }
 
+        public static void StaticMethod(float a)
+        {
+            Debug.Log($"{nameof(TestClass)}.{nameof(StaticMethod)}({a})");
+        }
+
         public static void GenericMethod<T>(T a)
         {
             Debug.Log($"{nameof(TestClass)}.{nameof(GenericMethod)}({a})");
