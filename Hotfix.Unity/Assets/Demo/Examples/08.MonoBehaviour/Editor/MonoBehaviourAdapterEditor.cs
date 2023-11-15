@@ -3,13 +3,13 @@ using UnityEditor;
 
 namespace Hotfix.Demo
 {
-    [CustomEditor(typeof(MonoBehaviourAdapter.Adaptor), true)]
+    [CustomEditor(typeof(MonoBehaviourTestAdapter.Adaptor), true)]
     public class MonoBehaviourTestAdapterEditor : UnityEditor.UI.GraphicEditor
     {
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            MonoBehaviourAdapter.Adaptor clr = target as MonoBehaviourAdapter.Adaptor;
+            MonoBehaviourTestAdapter.Adaptor clr = target as MonoBehaviourTestAdapter.Adaptor;
             var instance = clr.ILInstance;
             if (instance != null)
             {

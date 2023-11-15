@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Hotfix.Demo
 {
-    public class MonoBehaviourAdapter : CrossBindingAdaptor
+    public class MonoBehaviourTestAdapter : CrossBindingAdaptor
     {
         public override Type BaseCLRType
         {

@@ -33,7 +33,7 @@ namespace Hotfix.Demo
 
         static void InitILRuntime(AppDomain domain)
         {
-            domain.RegisterCrossBindingAdaptor(new MonoBehaviourAdapter());
+            domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdapter());
             domain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
             domain.RegisterCrossBindingAdaptor(new InheritanceBaseClassAdapter());
             domain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());

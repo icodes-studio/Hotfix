@@ -7,9 +7,9 @@ namespace Hotfix.Demo
         protected override void OnHotfixLoaded()
         {
             // Reflection is a very frequently used function in C# projects. ILRuntime also supports reflection.
-            // There is no difference between using reflection in the Hotfix DLL and native C#, so we will not introduce it here.
-            // This demo mainly introduces how to reflect the types of the Hotfix DLL in the main project.
-            // Suppose we want to create an instance of Hotfix.TestClass through reflection
+            // There is no difference between using reflection in the Hotfix DLL and native C#.
+            // This demo introduces how to reflect the types of the Hotfix DLL in the main project.
+            // Suppose that we want to create an instance of Hotfix.TestClass through reflection
             // Obviously we cannot get the type information through Activator or Type.GetType("Hotfix.TestClass")
             // We need to obtain the types in the Hotfix DLL through the AppDomain
 

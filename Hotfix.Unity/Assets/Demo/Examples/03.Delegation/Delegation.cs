@@ -49,7 +49,7 @@ namespace Hotfix.Demo
 
             // The delegate is completely used inside the Hotfix DLL and available directly without any processing.
             // If you need to call the delegate across domains (eg. transfer the delegate instance in the Hotfix DLL to the Unity main project),
-            // You need to register an adapter. This is because in the IL2CPP mode of iOS, types cannot be generated dynamically.
+            // You need to register a converter. This is because in the IL2CPP mode of iOS, types cannot be generated dynamically.
             // In order to avoid unpredictable problems, we did not create delegate instances through reflection, so some registrations need to be done manually.
             // If the delegate adapter is not registered, an error will be reported at runtime and the required registration code will be prompted.
             // Copy and paste it directly to the place where ILRuntime is initialized.

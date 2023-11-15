@@ -17,7 +17,7 @@ namespace Hotfix.Demo
             base.OnInitialize();
 
             // When using Couroutine, the C# compiler will automatically generate a class that implements the IEnumerator, IEnumerator<object> and IDisposable interfaces.
-            // Because this is cross-domain inheritance, you need to write a CrossBindAdapter (see the 04.Inheritance tutorial for details).
+            // This is cross-domain inheritance, so you need to write a CrossBindAdapter (see the 04.Inheritance tutorial for details).
             domain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
             domain.DebugService.StartDebugService(56000);
         }

@@ -22,23 +22,23 @@ namespace Hotfix.Demo
         {
             base.OnInitialize();
 
-            domain.RegisterCrossBindingAdaptor(new MonoBehaviourAdapter());
+            domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdapter());
         }
 
         protected override void OnHotfixLoaded()
         {
             // It is possible to use MonoBehaviour in the Hotfix DLL, but it's not recommended.
-            // Because even if it can be used, it will require a lot of extra work to fully support all the features of MonoBehaviour.
-            // Moreover, using MonoBehaviour to do game logic will be a nightmare when the project scale reaches a certain level,
-            // so it should be avoided as much as possible.
+            // Because it will require a lot of extra work to fully support all the features of MonoBehaviour.
+            // Moreover, using MonoBehaviour to do game logic will be a nightmare when the project scale reaches a certain level.
+            // so... It should be avoided as much as possible.
 
             // Directly calling GameObject.AddComponent<T> will report an error.
             // We need to hijack the AddComponent method and implement it ourselves
-            SetupCLRRedirection();
+            SetupAddComponent();
             domain.Invoke("Hotfix.TestMonoBehaviour", "RunTest", null, gameObject);
 
             // GetComponent is similar to AddComponent and needs to be handled by ourselves
-            SetupCLRRedirection2();
+            SetupGetComponent();
             domain.Invoke("Hotfix.TestMonoBehaviour", "RunTest2", null, gameObject);
 
             // So how do we get the MonoBehaviour of the Hotfix DLL from the Unity main project?
@@ -49,7 +49,7 @@ namespace Hotfix.Demo
             domain.Invoke(method, smb, null);
         }
 
-        private unsafe void SetupCLRRedirection()
+        private unsafe void SetupAddComponent()
         {
             // This should usually be written in OnInitialize. It is written here for demonstration.
             var methods = typeof(GameObject).GetMethods();
@@ -60,7 +60,7 @@ namespace Hotfix.Demo
             }
         }
 
-        private unsafe void SetupCLRRedirection2()
+        private unsafe void SetupGetComponent()
         {
             // This should usually be written in OnInitialize. It is written here for demonstration.
             var methods = typeof(GameObject).GetMethods();
@@ -99,7 +99,7 @@ namespace Hotfix.Demo
                     // The types in the Hotfix DLL is troublesome. We have to manually create the instance ourselves.
                     var ilInstance = new ILTypeInstance(type as ILType, false);
                     // Create an Adapter instance
-                    var clrInstance = instance.AddComponent<MonoBehaviourAdapter.Adaptor>();
+                    var clrInstance = instance.AddComponent<MonoBehaviourTestAdapter.Adaptor>();
                     // The instance created by Unity does not a instance in the Hotfix DLL, so it needs to be assigned manually.
                     clrInstance.ILInstance = ilInstance;
                     clrInstance.AppDomain = __domain;
@@ -140,7 +140,7 @@ namespace Hotfix.Demo
                 else
                 {
                     // The MonoBehaviour in all DLLs is actually this component.
-                    var clrInstances = instance.GetComponents<MonoBehaviourAdapter.Adaptor>();
+                    var clrInstances = instance.GetComponents<MonoBehaviourTestAdapter.Adaptor>();
                     for (int i = 0; i < clrInstances.Length; i++)
                     {
                         var clrInstance = clrInstances[i];
@@ -160,9 +160,9 @@ namespace Hotfix.Demo
             return __esp;
         }
 
-        private MonoBehaviourAdapter.Adaptor GetComponent(ILType type)
+        private MonoBehaviourTestAdapter.Adaptor GetComponent(ILType type)
         {
-            var components = GetComponents<MonoBehaviourAdapter.Adaptor>();
+            var components = GetComponents<MonoBehaviourTestAdapter.Adaptor>();
             for (int i = 0; i < components.Length; i++)
             {
                 var instance = components[i];
