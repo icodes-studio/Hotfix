@@ -149,7 +149,7 @@ namespace ILRuntime.Reflection
             }
         }
 
-        public ILRuntime.Mono.Cecil.TypeReference Definition
+        public Mono.Cecil.TypeReference Definition
         {
             get
             {

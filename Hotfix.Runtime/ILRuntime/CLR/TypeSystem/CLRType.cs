@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
-using ILRuntime.Mono.Cecil;
+using Mono.Cecil;
 using ILRuntime.CLR.Method;
 using ILRuntime.Reflection;
 using ILRuntime.Runtime.Environment;

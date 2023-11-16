@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using ILRuntime.Runtime;
 using ILRuntime.Runtime.Environment;
-using ILRuntime.Mono.Cecil.Pdb;
+using Mono.Cecil.Pdb;
 
 namespace Hotfix.Demo
 {

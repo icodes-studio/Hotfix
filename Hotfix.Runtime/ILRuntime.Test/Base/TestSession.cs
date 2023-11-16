@@ -6,9 +6,9 @@ using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime.Debugger;
 using ILRuntime.Runtime.Generated;
-using ILRuntime.Mono.Cecil.Cil;
-using ILRuntime.Mono.Cecil.Pdb;
-using ILRuntime.Mono.Cecil.Mdb;
+using Mono.Cecil.Cil;
+using Mono.Cecil.Pdb;
+using Mono.Cecil.Mdb;
 using AppDomain = ILRuntime.Runtime.Environment.AppDomain;
 
 namespace ILRuntime.Test

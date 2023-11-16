@@ -19,18 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="ILRuntime.Mono.Cecil">
-      <HintPath>..\Dependencies\ILRuntime.Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="ILRuntime.Mono.Cecil.Mdb">
-      <HintPath>..\Dependencies\ILRuntime.Mono.Cecil.Mdb.dll</HintPath>
-    </Reference>
-    <Reference Include="ILRuntime.Mono.Cecil.Pdb">
-      <HintPath>..\Dependencies\ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Generated\" />
   </ItemGroup>
 
