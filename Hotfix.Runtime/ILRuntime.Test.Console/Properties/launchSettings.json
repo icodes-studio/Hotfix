@@ -1,8 +1,16 @@
 {
   "profiles": {
-    "ILRuntime.Test.Console": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "Test": {
       "commandName": "Project",
-      "commandLineArgs": "../../../../ILRuntime.Test.Cases/bin/Release/netstandard2.0/ILRuntime.Test.Cases.dll true"
+      "commandLineArgs": "test ../../../../ILRuntime.Test.Cases/bin/Release/netstandard2.0/ILRuntime.Test.Cases.dll true"
+    },
+    "Generation": {
+      "commandName": "Project",
+      "commandLineArgs": "gen ../../../../ILRuntime.Test.Cases/bin/Release/netstandard2.0/ILRuntime.Test.Cases.dll"
     }
   }
 }
