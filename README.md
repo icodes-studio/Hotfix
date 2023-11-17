@@ -12,6 +12,11 @@
     - ***ILRuntime*** *(forked from)*
         - *https://github.com/Ourpalm/ILRuntime*
         - *https://github.com/Ourpalm/ILRuntimeU3D*
+    - ***Mono.Cecil***
+        - *Mono.Cecil by Jb Evain (0.11.5)*
+        - *https://www.mono-project.com/*
+        - *https://github.com/jbevain/cecil/*
+        - *https://www.nuget.org/packages/Mono.Cecil/0.11.5/ReportAbuse*
     - ***LitJson***
         - *https://litjson.net/*
         - *https://github.com/LitJSON/litjson*
