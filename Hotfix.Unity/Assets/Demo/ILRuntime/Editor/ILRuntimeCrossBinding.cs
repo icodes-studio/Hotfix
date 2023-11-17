@@ -3,7 +3,7 @@ using UnityEditor;
 using System.IO;
 using ILRuntime.Runtime.Environment;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public class ILRuntimeCrossBinding
     {
@@ -20,7 +20,7 @@ namespace Hotfix.Demo
             {
                 writer.WriteLine(
                     CrossBindingCodeGenerator.GenerateCrossBindingAdapterCode(
-                        typeof(InheritanceBaseClass), "Hotfix.Demo"));
+                        typeof(InheritanceBaseClass), "Hotfix.Unity"));
             }
 
             AssetDatabase.Refresh();

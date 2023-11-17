@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using ILRuntime.Runtime.Environment;
 using Mono.Cecil.Pdb;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public abstract class ExampleMonoBehaviour : MonoBehaviour
     {

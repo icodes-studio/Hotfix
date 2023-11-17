@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Profiling;
 using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class CLRBinding : ExampleMonoBehaviour
     {
@@ -22,17 +22,17 @@ namespace Hotfix.Demo
             //    UnityEngine_Debug_Binding.Register(app);
             //    System_String_Binding.Register(app);
             //    System_Collections_Generic_List_1_Int32_Binding.Register(app);
-            //    Hotfix_Demo_CLRBindingTest_Binding.Register(app);
-            //    Hotfix_Demo_DelegateMethod_Binding.Register(app);
-            //    Hotfix_Demo_DelegateFunction_Binding.Register(app);
+            //    Hotfix_Unity_CLRBindingTest_Binding.Register(app);
+            //    Hotfix_Unity_DelegateMethod_Binding.Register(app);
+            //    Hotfix_Unity_DelegateFunction_Binding.Register(app);
             //    System_Action_1_String_Binding.Register(app);
-            //    Hotfix_Demo_Delegation_Binding.Register(app);
+            //    Hotfix_Unity_Delegation_Binding.Register(app);
             //    System_Int32_Binding.Register(app);
-            //    Hotfix_Demo_Coroutine_Binding.Register(app);
+            //    Hotfix_Unity_Coroutine_Binding.Register(app);
             //    UnityEngine_Time_Binding.Register(app);
             //    UnityEngine_WaitForSeconds_Binding.Register(app);
             //    System_NotSupportedException_Binding.Register(app);
-            //    Hotfix_Demo_InheritanceBaseClass_Binding.Register(app);
+            //    Hotfix_Unity_InheritanceBaseClass_Binding.Register(app);
             //    System_Collections_Generic_List_1_ILTypeInstance_Binding.Register(app);
             //    System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding.Register(app);
             //    System_Collections_Generic_Dictionary_2_String_Int32_Binding.Register(app);
@@ -42,7 +42,7 @@ namespace Hotfix.Demo
             //    UnityEngine_GameObject_Binding.Register(app);
             //    System_Diagnostics_Stopwatch_Binding.Register(app);
             //    System_Text_StringBuilder_Binding.Register(app);
-            //    Hotfix_Demo_Performance_Binding.Register(app);
+            //    Hotfix_Unity_Performance_Binding.Register(app);
             //    UnityEngine_Transform_Binding.Register(app);
             //    UnityEngine_Object_Binding.Register(app);
             //    System_Int64_Binding.Register(app);

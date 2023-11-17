@@ -18,14 +18,14 @@ using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class Hotfix_Demo_Coroutine_Binding
+    unsafe class Hotfix_Unity_Coroutine_Binding
     {
         public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(Hotfix.Demo.Coroutine);
+            Type type = typeof(Hotfix.Unity.Coroutine);
             args = new Type[]{};
             method = type.GetMethod("get_Instance", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_Instance_0);
@@ -43,7 +43,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 0);
 
 
-            var result_of_this_method = Hotfix.Demo.Coroutine.Instance;
+            var result_of_this_method = Hotfix.Unity.Coroutine.Instance;
 
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
@@ -59,7 +59,7 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            Hotfix.Demo.Coroutine instance_of_this_method = (Hotfix.Demo.Coroutine)typeof(Hotfix.Demo.Coroutine).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)0);
+            Hotfix.Unity.Coroutine instance_of_this_method = (Hotfix.Unity.Coroutine)typeof(Hotfix.Unity.Coroutine).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)0);
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.DoCoroutine(@coroutine);

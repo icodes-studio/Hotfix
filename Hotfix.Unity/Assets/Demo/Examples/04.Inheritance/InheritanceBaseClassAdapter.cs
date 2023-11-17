@@ -8,7 +8,7 @@ using AutoList = System.Collections.Generic.List<object>;
 using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {   
     public class InheritanceBaseClassAdapter : CrossBindingAdaptor
     {
@@ -16,7 +16,7 @@ namespace Hotfix.Demo
         {
             get
             {
-                return typeof(Hotfix.Demo.InheritanceBaseClass);
+                return typeof(Hotfix.Unity.InheritanceBaseClass);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Hotfix.Demo
             return new Adapter(appdomain, instance);
         }
 
-        public class Adapter : Hotfix.Demo.InheritanceBaseClass, CrossBindingAdaptorType
+        public class Adapter : Hotfix.Unity.InheritanceBaseClass, CrossBindingAdaptorType
         {
             CrossBindingFunctionInfo<System.Int32> mget_Value_0 = new CrossBindingFunctionInfo<System.Int32>("get_Value");
             CrossBindingMethodInfo<System.Int32> mset_Value_1 = new CrossBindingMethodInfo<System.Int32>("set_Value");

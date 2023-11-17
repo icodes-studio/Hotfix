@@ -6,7 +6,7 @@ namespace Hotfix
     {
         public static void RunTest()
         {
-            Demo.Coroutine.Instance.DoCoroutine(Coroutine());
+            Unity.Coroutine.Instance.DoCoroutine(Coroutine());
         }
 
         static System.Collections.IEnumerator Coroutine()

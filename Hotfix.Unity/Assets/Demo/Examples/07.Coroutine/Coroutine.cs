@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class Coroutine : ExampleMonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class Inheritance : ExampleMonoBehaviour
     {

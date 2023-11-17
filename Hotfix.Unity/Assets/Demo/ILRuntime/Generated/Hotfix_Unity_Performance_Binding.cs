@@ -18,14 +18,14 @@ using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class Hotfix_Demo_Performance_Binding
+    unsafe class Hotfix_Unity_Performance_Binding
     {
         public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(Hotfix.Demo.Performance);
+            Type type = typeof(Hotfix.Unity.Performance);
             args = new Type[]{typeof(System.Single), typeof(System.Single)};
             method = type.GetMethod("MandelbrotCheck", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, MandelbrotCheck_0);
@@ -50,7 +50,7 @@ namespace ILRuntime.Runtime.Generated
             System.Single @x = *(float*)&ptr_of_this_method->Value;
 
 
-            var result_of_this_method = Hotfix.Demo.Performance.MandelbrotCheck(@x, @y);
+            var result_of_this_method = Hotfix.Unity.Performance.MandelbrotCheck(@x, @y);
 
             __ret->ObjectType = ObjectTypes.Integer;
             __ret->Value = result_of_this_method ? 1 : 0;
@@ -75,7 +75,7 @@ namespace ILRuntime.Runtime.Generated
             System.Int32 @a = ptr_of_this_method->Value;
 
 
-            Hotfix.Demo.Performance.TestFunc1(@a, @b, @c);
+            Hotfix.Unity.Performance.TestFunc1(@a, @b, @c);
 
             return __ret;
         }

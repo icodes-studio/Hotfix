@@ -18,38 +18,40 @@ using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class Hotfix_Demo_DelegateFunction_Binding
+    unsafe class Hotfix_Unity_CLRBindingTest_Binding
     {
         public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(Hotfix.Demo.DelegateFunction);
-            args = new Type[]{typeof(System.Int32)};
-            method = type.GetMethod("Invoke", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, Invoke_0);
+            Type type = typeof(Hotfix.Unity.CLRBindingTest);
+            args = new Type[]{typeof(System.Int32), typeof(System.Single)};
+            method = type.GetMethod("DoSomeTest", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, DoSomeTest_0);
 
 
         }
 
 
-        static StackObject* Invoke_0(ILIntepreter __intp, StackObject* __esp, AutoList __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* DoSomeTest_0(ILIntepreter __intp, StackObject* __esp, AutoList __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Environment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
             StackObject* __ret = ILIntepreter.Minus(__esp, 2);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Int32 @a = ptr_of_this_method->Value;
+            System.Single @b = *(float*)&ptr_of_this_method->Value;
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            Hotfix.Demo.DelegateFunction instance_of_this_method = (Hotfix.Demo.DelegateFunction)typeof(Hotfix.Demo.DelegateFunction).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)8);
-            __intp.Free(ptr_of_this_method);
+            System.Int32 @a = ptr_of_this_method->Value;
 
-            var result_of_this_method = instance_of_this_method.Invoke(@a);
 
-            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+            var result_of_this_method = Hotfix.Unity.CLRBindingTest.DoSomeTest(@a, @b);
+
+            __ret->ObjectType = ObjectTypes.Float;
+            *(float*)&__ret->Value = result_of_this_method;
+            return __ret + 1;
         }
 
 

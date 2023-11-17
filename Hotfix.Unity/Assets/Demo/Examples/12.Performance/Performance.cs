@@ -10,7 +10,7 @@ using ILRuntime.Runtime;
 using ILRuntime.Runtime.Environment;
 using Mono.Cecil.Pdb;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class Performance : MonoBehaviour
     {

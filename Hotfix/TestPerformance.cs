@@ -97,7 +97,7 @@ namespace Hotfix
                         int counter = 0;
 
                         // should use Burst Mathermatics.Sqrt not Math.Sqrt
-                        while (counter < 255 && Demo.Performance.MandelbrotCheck(workX, workY))
+                        while (counter < 255 && Unity.Performance.MandelbrotCheck(workX, workY))
                         {
                             counter++;
 
@@ -285,7 +285,7 @@ namespace Hotfix
             var transform = go.transform;
 
             for (int i = 0; i < 2000000; i++)
-                Demo.Performance.TestFunc1(1, "123", transform);
+                Unity.Performance.TestFunc1(1, "123", transform);
 
             GameObject.Destroy(go);
             sw.Stop();

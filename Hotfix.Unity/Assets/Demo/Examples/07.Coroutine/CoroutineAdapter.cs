@@ -5,7 +5,7 @@ using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.Intepreter;
 using ILRuntime.CLR.Method;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public class CoroutineAdapter : CrossBindingAdaptor
     {

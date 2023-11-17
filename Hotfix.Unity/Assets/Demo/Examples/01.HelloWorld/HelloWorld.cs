@@ -1,4 +1,4 @@
-﻿namespace Hotfix.Demo
+﻿namespace Hotfix.Unity
 {
     public sealed class HelloWorld : ExampleMonoBehaviour
     {

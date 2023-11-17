@@ -18,14 +18,14 @@ using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class Hotfix_Demo_DelegateMethod_Binding
+    unsafe class Hotfix_Unity_DelegateMethod_Binding
     {
         public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(Hotfix.Demo.DelegateMethod);
+            Type type = typeof(Hotfix.Unity.DelegateMethod);
             args = new Type[]{typeof(System.Int32)};
             method = type.GetMethod("Invoke", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Invoke_0);
@@ -44,7 +44,7 @@ namespace ILRuntime.Runtime.Generated
             System.Int32 @a = ptr_of_this_method->Value;
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            Hotfix.Demo.DelegateMethod instance_of_this_method = (Hotfix.Demo.DelegateMethod)typeof(Hotfix.Demo.DelegateMethod).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)8);
+            Hotfix.Unity.DelegateMethod instance_of_this_method = (Hotfix.Unity.DelegateMethod)typeof(Hotfix.Unity.DelegateMethod).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)8);
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.Invoke(@a);

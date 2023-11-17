@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     [CustomEditor(typeof(MonoBehaviourTestAdapter.Adaptor), true)]
     public class MonoBehaviourTestAdapterEditor : UnityEditor.UI.GraphicEditor

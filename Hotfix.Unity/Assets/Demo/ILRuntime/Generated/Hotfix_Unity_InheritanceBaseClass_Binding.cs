@@ -18,14 +18,14 @@ using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class Hotfix_Demo_InheritanceBaseClass_Binding
+    unsafe class Hotfix_Unity_InheritanceBaseClass_Binding
     {
         public static void Register(ILRuntime.Runtime.Environment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(Hotfix.Demo.InheritanceBaseClass);
+            Type type = typeof(Hotfix.Unity.InheritanceBaseClass);
             args = new Type[]{typeof(System.String)};
             method = type.GetMethod("TestVirtual", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, TestVirtual_0);
@@ -45,7 +45,7 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            Hotfix.Demo.InheritanceBaseClass instance_of_this_method = (Hotfix.Demo.InheritanceBaseClass)typeof(Hotfix.Demo.InheritanceBaseClass).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)0);
+            Hotfix.Unity.InheritanceBaseClass instance_of_this_method = (Hotfix.Unity.InheritanceBaseClass)typeof(Hotfix.Unity.InheritanceBaseClass).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)0);
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.TestVirtual(@str);

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class ValueTypeBinding : ExampleMonoBehaviour
     {

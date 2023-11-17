@@ -5,7 +5,7 @@ using ILRuntime.Runtime.Environment;
 using ILRuntime.Runtime.CLRBinding;
 using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public class ILRuntimeCLRBinding
     {

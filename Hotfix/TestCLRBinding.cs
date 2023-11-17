@@ -6,7 +6,7 @@
         {
             for (int i = 0; i < 100000; i++)
             {
-                Demo.CLRBindingTest.DoSomeTest(i, i);
+                Unity.CLRBindingTest.DoSomeTest(i, i);
             }
         }
     }

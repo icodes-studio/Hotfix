@@ -6,7 +6,7 @@ using ILRuntime.Runtime.Intepreter;
 using ILRuntime.Runtime.Stack;
 using ILRuntime.Runtime.Environment;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class CLRRedirection : ExampleMonoBehaviour
     {

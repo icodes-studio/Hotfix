@@ -2,7 +2,7 @@
 using UnityEngine;
 using ILRuntime.CLR.TypeSystem;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public sealed class Invocation : ExampleMonoBehaviour
     {
@@ -75,7 +75,7 @@ namespace Hotfix.Demo
             method = type.GetMethod("GenericMethod", parameters, genericArguments);
             domain.Invoke(method, null, 33333);
 
-            // Calling methods with ref/out parameters.
+            // Calling instance methods with ref/out parameters.
             method = type.GetMethod("RefOutMethod", 3);
             int initialVal = 500;
             using (var context = domain.BeginInvoke(method))

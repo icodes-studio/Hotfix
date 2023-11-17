@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public class ILRuntimeMenu
     {

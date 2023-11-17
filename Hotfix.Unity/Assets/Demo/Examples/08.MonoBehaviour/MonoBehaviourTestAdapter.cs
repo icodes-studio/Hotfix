@@ -4,7 +4,7 @@ using ILRuntime.Runtime.Intepreter;
 using ILRuntime.CLR.Method;
 using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public class MonoBehaviourTestAdapter : CrossBindingAdaptor
     {

@@ -8,7 +8,7 @@ using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime.Stack;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public unsafe class Vector2Binder : ValueTypeBinder<Vector2>
     {

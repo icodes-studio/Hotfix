@@ -7,7 +7,7 @@ using ILRuntime.CLR.Method;
 using ILRuntime.Runtime.Stack;
 using UnityEngine;
 
-namespace Hotfix.Demo
+namespace Hotfix.Unity
 {
     public unsafe class Vector3Binder : ValueTypeBinder<Vector3>
     {
