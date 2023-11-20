@@ -68,7 +68,7 @@ namespace Hotfix.Unity
             {
                 executed = true;
 
-                // Before running this Example, please click the menu [ILRuntime/Generate CLR Binding automatically] to generate the required binding code.
+                // Before running this Example, Select the menu [ILRuntime/Generate CLR Binding automatically] to generate the required binding code.
                 // By default, the calling method of Unity project from the Hotfix is called via reflection.
                 // GC Alloc will be generated in this process, and the execution efficiency will be low.
                 // Please uncomment the InitializeBindings method to compare the impact of CLR binding on running time and GC overhead.

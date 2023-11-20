@@ -22,7 +22,7 @@ namespace Hotfix.Unity
         {
             base.OnInitialize();
 
-            domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdapter());
+            domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdaptor());
         }
 
         protected override void OnHotfixLoaded()
@@ -98,8 +98,8 @@ namespace Hotfix.Unity
                 {
                     // The types in the Hotfix DLL is troublesome. We have to manually create the instance ourselves.
                     var ilInstance = new ILTypeInstance(type as ILType, false);
-                    // Create an Adapter instance
-                    var clrInstance = instance.AddComponent<MonoBehaviourTestAdapter.Adaptor>();
+                    // Create an Adaptor instance
+                    var clrInstance = instance.AddComponent<MonoBehaviourTestAdaptor.Adaptor>();
                     // The instance created by Unity does not a instance in the Hotfix DLL, so it needs to be assigned manually.
                     clrInstance.ILInstance = ilInstance;
                     clrInstance.AppDomain = __domain;
@@ -140,7 +140,7 @@ namespace Hotfix.Unity
                 else
                 {
                     // The MonoBehaviour in all DLLs is actually this component.
-                    var clrInstances = instance.GetComponents<MonoBehaviourTestAdapter.Adaptor>();
+                    var clrInstances = instance.GetComponents<MonoBehaviourTestAdaptor.Adaptor>();
                     for (int i = 0; i < clrInstances.Length; i++)
                     {
                         var clrInstance = clrInstances[i];
@@ -160,9 +160,9 @@ namespace Hotfix.Unity
             return __esp;
         }
 
-        private MonoBehaviourTestAdapter.Adaptor GetComponent(ILType type)
+        private MonoBehaviourTestAdaptor.Adaptor GetComponent(ILType type)
         {
-            var components = GetComponents<MonoBehaviourTestAdapter.Adaptor>();
+            var components = GetComponents<MonoBehaviourTestAdaptor.Adaptor>();
             for (int i = 0; i < components.Length; i++)
             {
                 var instance = components[i];

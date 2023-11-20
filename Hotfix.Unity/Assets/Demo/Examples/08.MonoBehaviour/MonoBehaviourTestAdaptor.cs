@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Hotfix.Unity
 {
-    public class MonoBehaviourTestAdapter : CrossBindingAdaptor
+    public class MonoBehaviourTestAdaptor : CrossBindingAdaptor
     {
         public override Type BaseCLRType
         {
@@ -23,7 +23,7 @@ namespace Hotfix.Unity
             return new Adaptor(appdomain, instance);
         }
 
-        // In order to fully realize all the features of MonoBehaviour, this Adapter needs to be extended.
+        // In order to fully realize all the features of MonoBehaviour, this Adaptor needs to be extended.
         // Here I only give some ideas and implement the most commonly used Awake, Start and Update.
         public class Adaptor : MonoBehaviour, CrossBindingAdaptorType
         {

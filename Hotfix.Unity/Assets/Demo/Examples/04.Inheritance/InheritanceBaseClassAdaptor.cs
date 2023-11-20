@@ -9,8 +9,9 @@ using AutoList = ILRuntime.Other.UncheckedList<object>;
 #endif
 
 namespace Hotfix.Unity
-{   
-    public class InheritanceBaseClassAdapter : CrossBindingAdaptor
+{
+    // All adaptors should inherit CrossBindingAdaptor
+    public class InheritanceBaseClassAdaptor : CrossBindingAdaptor
     {
         public override Type BaseCLRType
         {
@@ -24,16 +25,17 @@ namespace Hotfix.Unity
         {
             get
             {
-                return typeof(Adapter);
+                return typeof(Adaptor);
             }
         }
 
         public override object CreateCLRInstance(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
         {
-            return new Adapter(appdomain, instance);
+            return new Adaptor(appdomain, instance);
         }
 
-        public class Adapter : Hotfix.Unity.InheritanceBaseClass, CrossBindingAdaptorType
+        // The Adaptor class should inherit the type you want to inherit from ILRuntime, and implement the CrossBindingAdaptorType interface
+        public class Adaptor : Hotfix.Unity.InheritanceBaseClass, CrossBindingAdaptorType
         {
             CrossBindingFunctionInfo<System.Int32> mget_Value_0 = new CrossBindingFunctionInfo<System.Int32>("get_Value");
             CrossBindingMethodInfo<System.Int32> mset_Value_1 = new CrossBindingMethodInfo<System.Int32>("set_Value");
@@ -44,12 +46,12 @@ namespace Hotfix.Unity
             ILTypeInstance instance;
             ILRuntime.Runtime.Environment.AppDomain appdomain;
 
-            public Adapter()
+            public Adaptor()
             {
 
             }
 
-            public Adapter(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
+            public Adaptor(ILRuntime.Runtime.Environment.AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;
@@ -57,6 +59,8 @@ namespace Hotfix.Unity
 
             public ILTypeInstance ILInstance { get { return instance; } }
 
+            // For virtual method, you must add a bool variable to determine if it's already invoking,
+            // otherwise it will cause stackoverflow if you call base.TestVirtual() inside ILRuntime
             public override void TestVirtual(System.String str)
             {
                 if (mTestVirtual_2.CheckShouldInvokeBase(this.instance))

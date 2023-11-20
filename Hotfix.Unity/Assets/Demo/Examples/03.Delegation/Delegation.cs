@@ -22,7 +22,7 @@ namespace Hotfix.Unity
             // Action<string>'s parameter is a string
             domain.DelegateManager.RegisterMethodDelegate<string>();
 
-            // ILRuntime internally uses Action and Func. so other delegate types need to write converters.
+            // ILRuntime internally uses Action and Func. so other delegate types need to write convertors.
             domain.DelegateManager.RegisterDelegateConvertor<DelegateMethod>((action) =>
             {
                 // It's to convert Action<int> into DelegateMethod
@@ -49,15 +49,15 @@ namespace Hotfix.Unity
 
             // The delegate is completely used inside the Hotfix DLL and available directly without any processing.
             // If you want to call the delegate across domains (eg. transfer the delegate instance from the Hotfix.dll to the Unity project),
-            // You need to register a converter. This is because in the IL2CPP mode of iOS, types cannot be generated dynamically.
+            // You need to register a convertor. This is because in the IL2CPP mode of iOS, types cannot be generated dynamically.
             // In order to avoid unpredictable problems, we did not create delegate instances through reflection, so some registrations need to be done manually.
-            // If the delegate converter is not registered, an error will be reported at runtime and the required registration code will be prompted.
+            // If the delegate convertor is not registered, an error will be reported at runtime and the required registration code will be prompted.
             // Copy and paste it directly to the place where ILRuntime is initialized.
 
             domain.Invoke("Hotfix.TestDelegate", "Initialize2", null, null);
             domain.Invoke("Hotfix.TestDelegate", "RunTest2", null, null);
 
-            // Using Action or Func as a delegate type, You can avoid writing a converter in the project.
+            // Using Action or Func as a delegate type, You can avoid writing a convertor in the project.
             // Also, unnecessary cross-domain delegate calls should be minimized.
             // If the delegator is only used in the Hotfix DLL, no registration is required.
 

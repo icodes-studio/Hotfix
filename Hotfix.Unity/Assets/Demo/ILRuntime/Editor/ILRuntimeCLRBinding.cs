@@ -33,9 +33,9 @@ namespace Hotfix.Unity
 
         static void InitILRuntime(AppDomain domain)
         {
-            domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdapter());
-            domain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
-            domain.RegisterCrossBindingAdaptor(new InheritanceBaseClassAdapter());
+            domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdaptor());
+            domain.RegisterCrossBindingAdaptor(new CoroutineAdaptor());
+            domain.RegisterCrossBindingAdaptor(new InheritanceBaseClassAdaptor());
             domain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());
             domain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
             domain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());

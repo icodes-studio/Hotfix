@@ -23,7 +23,7 @@ namespace Hotfix.Unity
 
         protected override void OnHotfixLoaded()
         {
-            // CLR redirection is needed when we need to hijack the original method implementation and add some special processing.
+            // CLR redirection is needed when we want to hijack the original method implementation and add some special processing.
             // CLR redirection is closely related to the underlying implementation of ILRuntime.
             // You need to first read the documents on the implementation principle of ILRuntime to fully understand this Example.
 

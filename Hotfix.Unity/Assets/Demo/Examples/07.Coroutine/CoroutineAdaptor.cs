@@ -7,7 +7,7 @@ using ILRuntime.CLR.Method;
 
 namespace Hotfix.Unity
 {
-    public class CoroutineAdapter : CrossBindingAdaptor
+    public class CoroutineAdaptor : CrossBindingAdaptor
     {
         public override Type BaseCLRType
         {
@@ -18,7 +18,7 @@ namespace Hotfix.Unity
         {
             get
             {
-                // Cross-domain inheritance can only have one Adapter,
+                // Cross-domain inheritance can only have one Adaptor,
                 // so you should try to avoid a class implementing multiple external interfaces at the same time.
                 // For coroutine, it is IEnumerator<object>, IEnumerator and IDisposable.
                 return new Type[] { typeof(IEnumerator<object>), typeof(IEnumerator), typeof(IDisposable) };

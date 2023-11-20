@@ -2,12 +2,11 @@
 
 namespace Hotfix
 {
-    // NOTE: Only one class or interface from the main Unity project is allowed,
-    // but there can be any number of interfaces in the Hotfix DLL
+    // Only one class or interface from the main Unity project is allowed.
     public class TestInheritance : Unity.InheritanceBaseClass
     {
         public override int Value
-        { 
+        {
             get; set;
         }
 
