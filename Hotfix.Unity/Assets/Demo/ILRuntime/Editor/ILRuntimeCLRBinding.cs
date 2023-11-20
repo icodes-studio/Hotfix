@@ -30,7 +30,6 @@ namespace Hotfix.Unity
             AssetDatabase.Refresh();
         }
 
-
         static void InitILRuntime(AppDomain domain)
         {
             domain.RegisterCrossBindingAdaptor(new MonoBehaviourTestAdaptor());
