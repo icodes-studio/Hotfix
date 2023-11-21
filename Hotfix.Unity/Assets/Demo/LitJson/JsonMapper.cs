@@ -1052,16 +1052,16 @@ namespace LitJson
 
         public unsafe static void RegisterILRuntimeCLRRedirection(ILRuntime.Runtime.Environment.AppDomain appdomain)
         {
-            foreach(var i in typeof(JsonMapper).GetMethods())
+            foreach (var i in typeof(JsonMapper).GetMethods())
             {
-                if(i.Name == "ToObject" && i.IsGenericMethodDefinition)
+                if (i.Name == "ToObject" && i.IsGenericMethodDefinition)
                 {
                     var param = i.GetParameters();
-                    if(param[0].ParameterType == typeof(string))
+                    if (param[0].ParameterType == typeof(string))
                     {
                         appdomain.RegisterCLRMethodRedirection(i, JsonToObject);
                     }
-                    else if(param[0].ParameterType == typeof(JsonReader))
+                    else if (param[0].ParameterType == typeof(JsonReader))
                     {
                         appdomain.RegisterCLRMethodRedirection(i, JsonToObject2);
                     }

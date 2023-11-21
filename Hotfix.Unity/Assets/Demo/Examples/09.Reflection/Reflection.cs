@@ -26,7 +26,7 @@ namespace Hotfix.Unity
             var field = type.GetField("id", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             field.SetValue(instance, 111111);
 
-            // We use reflection to call the property to check the value just assigned
+            // We use reflection to call the property to check the value.
             var property = type.GetProperty("ID");
             var value = property.GetValue(instance, null);
             Debug.Log($"ID = {value}");

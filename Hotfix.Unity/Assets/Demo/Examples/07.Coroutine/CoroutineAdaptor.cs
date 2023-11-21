@@ -20,7 +20,7 @@ namespace Hotfix.Unity
             {
                 // Cross-domain inheritance can only have one Adaptor,
                 // so you should try to avoid a class implementing multiple external interfaces at the same time.
-                // For coroutine, it is IEnumerator<object>, IEnumerator and IDisposable.
+                // In case of coroutine, it is IEnumerator<object>, IEnumerator and IDisposable.
                 return new Type[] { typeof(IEnumerator<object>), typeof(IEnumerator), typeof(IDisposable) };
             }
         }
