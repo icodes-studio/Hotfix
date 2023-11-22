@@ -3,6 +3,7 @@
 - A patch system using ILRuntime.
 - The ILRuntime is to run c# code on enviorments without JIT
 - Forked from [**Ourpalm/ILRuntime**](https://github.com/Ourpalm/ILRuntime)
+- [**Documents**](https://www.notion.so/Hotfix-415dd73855054584845312a340a846cd)
 
 　
 
